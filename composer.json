@@ -1,0 +1,14 @@
+{
+    "name": "jameswaring/conductcore",
+    "description": "A web app to track behaviour and implement intervention",
+    "type": "project",
+    "require": {
+        "symfony/symfony": "^5.1"
+    },
+    "authors": [
+        {
+            "name": "James Waring",
+            "email": "jameswaring7@gmail.com"
+        }
+    ]
+}
