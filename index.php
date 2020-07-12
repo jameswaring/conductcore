@@ -6,7 +6,7 @@ session_start();
 <head>
     <title>Track Behaviour, Effectively Intervene</title>
     <link rel="stylesheet" type="text/css" href="css/styles.css">
-    <script type="text/javascript" link="scripts/accountControl.js"></script>
+    <script type="text/javascript" src="scripts/accountControl.js"></script>
 </head>
 <body>
 <h1>Welcome to Conduct Core</h1>
@@ -15,7 +15,7 @@ session_start();
     School: <input type="text" name="schoolInput"><div id="erschool"></div><br>
     Username: <input type="text" name="usernameInput"><div id="eruser"></div><br>
     Password: <input type="text" name="passwordInput"><div id="erpass"></div>
-    <input type="button" name="loginSubmit" onclick="return validateLogin()">
+    <input type="button" name="loginSubmit" value="submit" onclick="return validateLogin()">
 </form>
 </body>
 </html>
