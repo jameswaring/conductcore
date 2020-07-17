@@ -41,6 +41,7 @@ function connectionTest(){
     */
 
     $client = new MongoDB\Client('mongodb+srv://james:conductcore123!@primarycluster.hgyaj.mongodb.net/<dbname>?retryWrites=true&w=majority');
+    $dbs = $client->listDatabases();
 
     /*
     * First we'll add a few songs. Nothing is required to create the songs
