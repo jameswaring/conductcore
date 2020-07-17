@@ -12,6 +12,5 @@ else{
     $password = htmlspecialchars($_POST['passInput']);
 }
 
-
 ?>
 
