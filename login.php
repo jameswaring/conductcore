@@ -10,6 +10,7 @@ else{
     $school = htmlspecialchars($_POST['schoolInput']);
     $username = htmlspecialchars($_POST['usernameInput']);
     $password = htmlspecialchars($_POST['passInput']);
+    echo 'page loaded';
     connectionTest();
     header("Location: home.php");
 }
