@@ -40,7 +40,7 @@ function connectionTest(){
     * mongodb://[username:password@]host:port/[database]
     */
 
-    $client = new MongoDB\Client('mongodb+srv://james:<password>@primarycluster.hgyaj.mongodb.net/<dbname>?retryWrites=true&w=majority');
+    $client = new MongoDB\Client('mongodb+srv://james:conductcore123!@primarycluster.hgyaj.mongodb.net/<dbname>?retryWrites=true&w=majority');
 
     /*
     * First we'll add a few songs. Nothing is required to create the songs
