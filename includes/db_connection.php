@@ -78,10 +78,6 @@ function connectionTest(){
         echo ' topped the charts for ' .$doc['weeksAtOne']; 
         echo ' straight weeks.', "\n";
     }
-
-    // Since this is an example, we'll clean up after ourselves.
-    $songs->drop();
-
 }
 
 

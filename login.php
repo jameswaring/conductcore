@@ -11,7 +11,7 @@ else{
     $username = htmlspecialchars($_POST['usernameInput']);
     $password = htmlspecialchars($_POST['passInput']);
     connectionTest();
-    echo 'connection attempted';
+    header("Location: home.php");
 }
 
 ?>
