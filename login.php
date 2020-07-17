@@ -10,9 +10,9 @@ else{
     $school = htmlspecialchars($_POST['schoolInput']);
     $username = htmlspecialchars($_POST['usernameInput']);
     $password = htmlspecialchars($_POST['passInput']);
+    connectionTest();
+    echo 'connection attempted';
 }
-
-connectionTest();
 
 ?>
 
