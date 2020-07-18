@@ -3,12 +3,22 @@
 session_start();
 include 'includes/db_connection.php';
 
-$school = htmlspecialchars($_POST['schoolInput']);
-$username = htmlspecialchars($_POST['usernameInput']);
-$password = htmlspecialchars($_POST['passInput']);
-echo $school;
-echo $username;
-echo $password;
+if((!isset($$_POST['schoolInput'])) || (!isset($$_POST['usernameInput'])) || (!isset($$_POST['passInput']))){
+    header("Location: index.php");
+}
+else{
+    $school = htmlspecialchars($_POST['schoolInput']);
+    $username = htmlspecialchars($_POST['usernameInput']);
+    $password = htmlspecialchars($_POST['passInput']);
 
-// header("Location: home.php");
+    $users = $client->db->users;
+    $document = array( 
+        "username" => "Deny", 
+        "password" => "1234"
+     );
+    $users->insertOne($document);
+
+    header("Location: home.php");
+}
+
 ?>
