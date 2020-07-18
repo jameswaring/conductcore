@@ -15,8 +15,5 @@ function validateLogin() {
         document.getElementById("erpass").innerHTML = "No password entered";
         failed = true;
     }
-    if(failed){
-        return !failed;
-    }
-    return true;
+    return !failed;
 }

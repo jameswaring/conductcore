@@ -15,7 +15,7 @@ session_start();
     School: <input type="text" name="schoolInput"><div id="erschool"></div><br>
     Username: <input type="text" name="usernameInput"><div id="eruser"></div><br>
     Password: <input type="text" name="passwordInput"><div id="erpass"></div>
-    <button type="submit" name="loginSubmit" value="submit" onclick="return validateLogin()">
+    <button type="submit" name="loginSubmit" value="submit" onclick="if(validateLogin()) this.form.submit()">
 </form>
 </body>
 </html>
