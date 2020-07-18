@@ -79,8 +79,4 @@ function connectionTest(){
         echo ' straight weeks.', "\n";
     }
 }
-
-$strvar = "working";
-return($strvar);
-
 ?>
