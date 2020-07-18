@@ -80,6 +80,7 @@ function connectionTest(){
     }
 }
 
-
+$strvar = "working";
+return($strvar);
 
 ?>
