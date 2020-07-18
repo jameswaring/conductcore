@@ -18,5 +18,5 @@ function validateLogin() {
     if(failed){
         return failed;
     }
-    return failed;
+    return true;
 }
