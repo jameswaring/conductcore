@@ -12,9 +12,9 @@ session_start();
 <h1>Welcome to Conduct Core</h1>
 <p>Please login with your credentials below</p>
 <form action="login.php" method="post">
-    School: <input type="text" name="schoolInput"><div id="erschool"></div><br>
     Username: <input type="text" name="usernameInput"><div id="eruser"></div><br>
-    Password: <input type="text" name="passwordInput"><div id="erpass"></div>
+    Password: <input type="text" name="passwordInput"><div id="erpass"></div><br>
+    School: <input type="text" name="schoolInput"><div id="erschool"></div>
     <button type="submit" name="loginSubmit" value="submit" onclick="if(validateLogin()) this.form.submit()">
 </form>
 </body>
