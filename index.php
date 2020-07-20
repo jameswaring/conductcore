@@ -15,7 +15,14 @@ session_start();
     Username: <input type="text" name="usernameInput"><div id="eruser"></div><br>
     Password: <input type="text" name="passwordInput"><div id="erpass"></div><br>
     School: <input type="text" name="schoolInput"><div id="erschool"></div>
-    <button type="submit" name="loginSubmit" value="submit" onclick="if(validateLogin()) this.form.submit()">
+    <input type="submit" name="loginSubmit" value="login" onclick="if(validateLogin()) this.form.submit()">
+</form>
+<p>Or register here</p>
+<form action="signup.php" method="post">
+    Username: <input type="text" name="usernameInput"><div id="eruser"></div><br>
+    Password: <input type="text" name="passwordInput"><div id="erpass"></div><br>
+    School: <input type="text" name="schoolInput"><div id="erschool"></div>
+    <input type="submit" name="loginSubmit" value="register" onclick="if(validateLogin()) this.form.submit()">
 </form>
 </body>
 </html>
