@@ -1,3 +1,10 @@
+<?php
+    ob_start();
+    if(!isset($_HEADER['username'])){
+        header("Location: index.php");
+        die();
+    }
+?>
 <!DOCTYPE html>
 <html>
 <head>
