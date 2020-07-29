@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 include 'includes/db_connection.php';
 
 if(empty($_POST)){
@@ -22,6 +22,7 @@ else{
         }
         else{
             $_SESSION['username'] = $username;
+            $_SESSION['school'] = $school;
             header("Location: home.php");
             die();
             }

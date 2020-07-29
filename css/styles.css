@@ -1,28 +1,80 @@
-.flex-container {
-    height: 100%;
-    padding: 0;
-    margin: 0;
-    display: -webkit-box;
-    display: -moz-box;
-    display: -ms-flexbox;
-    display: -webkit-flex;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+body {
+  background: #555;
 }
-.centre-holder {
-    width: auto;
-    border: 1px solid blue;
+
+.content {
+width: 80%;
+margin: auto;
+background: white;
+padding: 10px;
+display: flex;
+flex-direction: column;
+align-items: center;
 }
-.centre-item {
-    background-color: tomato;
-    padding: 5px;
-    width: 20px;
-    height: 20px;
-    margin: 10px;
-    line-height: 20px;
-    color: white;
-    font-weight: bold;
-    font-size: 2em;
-    text-align: center;
+
+h1{
+  justify-content: center;
+  display: flex;
+}
+
+.wrap{
+  display: flex;
+  justify-content: center;
+  height: 100%;
+}
+
+.welcome-message{
+  align-self: flex-start;
+  font-family: 'Source Sans Pro', sans-serif;
+}
+
+.index-holder{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-style: ridge;
+  flex-direction: column;
+  padding: 40px;
+}
+
+.login-form{
+    margin:auto;
+}
+
+.navbar {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  flex-direction: row;
+  }
+  
+.navbar li{
+  padding: 0px 20px;
+}
+
+.navbar li a {
+  display: block;
+  padding: 9px;
+  transition: all 0.3s ease 0s;
+  color: rgba(0, 136, 139, 1);
+}
+
+.navbar li a:hover {
+  color: rgba(0, 136, 139, 0.6);
+}
+
+.header{
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  flex-direction: row;
+  align-items: center;
+}
+
+button{
+  background-color: rgba(0, 136, 139, 1);
+  border: none;
+  border-radius: 50px;
+  padding: 9px 25px;
+  cursor: pointer;
 }
