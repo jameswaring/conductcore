@@ -17,3 +17,47 @@ function validateLogin() {
     }
     return !failed;
 }
+
+function validatePupilSearch() {
+    var fname = document.getElementsByName("pupilfname")[0].value
+    var sname = document.getElementsByName("pupilsname")[0].value
+    var failed = false;
+    if(!fname){
+        document.getElementById("ername").innerHTML = "No first name entered";
+        failed = true;
+    }
+    if(!sname){
+        document.getElementById("ersurname").innerHTML = "No surname entered";
+        failed = true;
+    }
+    else{
+        return !failed
+    }  
+}
+
+function validatePupilReg() {
+    var fname = document.getElementsByName("fnameInput")[0].value
+    var sname = document.getElementsByName("snameInput")[0].value
+    var sex = document.getElementsByName("sexInput")[0].value
+    var dob = document.getElementsByName("dobInput")[0].value
+    var failed = false;
+    if(!fname){
+        document.getElementById("erfirstname").innerHTML = "No first name entered";
+        failed = true;
+    }
+    if(!sname){
+        document.getElementById("ersurname").innerHTML = "No surname entered";
+        failed = true;
+    }
+    if(!sex){
+        document.getElementById("ersex").innerHTML = "No sex entered";
+        failed = true;
+    }
+    if(!dob){
+        document.getElementById("erdob").innerHTML = "No date of birth entered";
+        failed = true;
+    }
+    else{
+        return !failed
+    }  
+}

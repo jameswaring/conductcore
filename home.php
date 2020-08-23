@@ -24,6 +24,9 @@ include 'includes/teachermenu.php';
     Over time we can not only track the behaviour of individual pupils, but we can also see what effect our individual
     interventions are having. We can use this information to plan for a better learning environment for each pupil.
 </p>
+<p class="welcome-message">
+    Get started by using the menu at the top to find a pupil, or view the behaviour report of your own groups.
+</p>
 </div>
 </body>
 </html>

@@ -23,6 +23,11 @@ h1{
   height: 100%;
 }
 
+.pupil-search{
+  display: flex;
+  justify-content: left;
+}
+
 .welcome-message{
   align-self: flex-start;
   font-family: 'Source Sans Pro', sans-serif;
@@ -77,4 +82,10 @@ button{
   border-radius: 50px;
   padding: 9px 25px;
   cursor: pointer;
+}
+
+.regPupForm{
+  text-align: left;
+  border: darkviolet;
+  border-radius: 5px;
 }
