@@ -1,5 +1,6 @@
 <?php
 session_start();
+ob_start();
 ?>
 <!DOCTYPE html>
 <html>
@@ -27,6 +28,7 @@ remain in case you wish to reactive it at a later date. To permanently remove a 
 <script>
   $( function() {
     $( "#datepicker" ).datepicker({
+        dateFormat: 'yy-mm-dd',
         endDate: new Date()
     });
   });
@@ -34,7 +36,10 @@ remain in case you wish to reactive it at a later date. To permanently remove a 
 <form action="registersubmit.php" method="post">
     First Name: <input type="text" autocomplete="off" name="fnameInput"><div id="erfirstname"></div><br>
     Surname: <input type="text" autocomplete="off" name="snameInput"><div id="ersurname"></div><br>
-    Sex:      <input type="text" name="sexInput" autocomplete="off"><div id="ersex"></div><br>
+    Sex:      <select id="sexInput" name="sexInput">
+        <option value="male">Male</option>
+        <option value="female">Female</option>
+    </select><div id="ersex"></div><br>
     DOB:    <input type="text" id="datepicker" name="dobInput"><div id="erdob"></p>
     <input type="submit" name="pupilRegSubmit" value="Register" onclick="if(validatePupilReg()) this.form.submit()">
 </form>
