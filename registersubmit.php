@@ -23,7 +23,7 @@ else{
         $stmtUsr2 -> bindValue(':schoolID', $schoolID);
         $stmtUsr2 -> execute();
         // fetch pupil's ID for use in further queries
-        $sqlfetch = 'SELECT * FROM students WHERE studentID = (SELECT MAX(studentID)';
+        $sqlfetch = 'SELECT * FROM students WHERE studentID = (SELECT MAX(studentID) from students)';
         $sqlfetchexec = $dbconn -> prepare($sqlfetch);
         $sqlfetchexec -> execute();
         $row = $sqlfetchexec->fetch();

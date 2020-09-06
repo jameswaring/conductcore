@@ -16,7 +16,7 @@
 <body>
 <div class="content">
 <?php
-include 'includes/teachermenu.php';
+    include 'includes/teachermenu.php';
 ?>
 <h1>Name of Pupil</h1>
 <p class="welcome-message">
