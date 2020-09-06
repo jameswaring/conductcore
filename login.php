@@ -23,6 +23,7 @@ else{
         else{
             $_SESSION['username'] = $username;
             $_SESSION['school'] = $school;
+            $_SESSION['firstName'] = $row['firstName'];
             header("Location: home.php");
             die();
             }

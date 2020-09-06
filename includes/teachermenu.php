@@ -9,5 +9,5 @@
 			<li><a href="https://www.bitdegree.org/" target="_blank">Reports</a></li>
 		</ul>
 	</nav>
-	<a class="cta" href="#"><button>Help</button></a>
+	<a class="cta" href="/../index.php"><button>Logout</button></a>
 </div>

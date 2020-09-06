@@ -89,3 +89,9 @@ button{
   border: darkviolet;
   border-radius: 5px;
 }
+
+.loggedin{
+    font-size: 9px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    text-align: right;
+}
