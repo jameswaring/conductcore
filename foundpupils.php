@@ -26,7 +26,7 @@ include 'includes/teachermenu.php';
         }
         else{
             foreach($_SESSION['foundPupils'] as $found){
-                    echo("<a href='yourLink'>".$found['firstName'].'&nbsp;&nbsp;&nbsp;&nbsp;'.$found['surname'].'&nbsp;&nbsp;&nbsp;&nbsp;'.$found['dob']."</a>");
+                    echo("<a href='pupilprofile.php?'id=".$found['studentID'].">".$found['firstName'].'&nbsp;&nbsp;&nbsp;&nbsp;'.$found['surname'].'&nbsp;&nbsp;&nbsp;&nbsp;'.$found['dob']."</a><br>");
                 }
         }
     ?>

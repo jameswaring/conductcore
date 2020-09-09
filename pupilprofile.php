@@ -22,7 +22,14 @@
 <p class="welcome-message">
 </p>
 <p class="welcome-message">
-   The following is the profile for <?php echo $_SESSION['loggedStudentFirstName'];?>
+<?php
+    if(isset($_GET['id'])){
+        echo("You came from the search page");
+    }
+    else{
+        echo('The following is the profile for'.$_SESSION['loggedStudentFirstName']);
+    }
+?>
 </p>
 </div>
 </body>
