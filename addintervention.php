@@ -42,6 +42,7 @@ include 'includes/teachermenu.php';
     Incident Date: <input type="text" id="incdate" name="incdate"><div id="erdate"></div>
     <input type="submit" name="loginSubmit" value="login" onclick="if(validateLogin()) this.form.submit()">
 </form>
+<p class="loggedin">You are logged in as <?php echo($_SESSION['loggedIn']['firstName']);?></p>
 </div>
 </body>
 </html>

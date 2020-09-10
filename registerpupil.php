@@ -61,6 +61,7 @@ remain in case you wish to reactive it at a later date. To permanently remove a 
     <input type="submit" name="pupilRegSubmit" value="Register" onclick="if(validatePupilReg()) this.form.submit()">
 </form>
 </div>
+<p class="loggedin">You are logged in as <?php echo($_SESSION['loggedIn']['firstName']);?></p>
 </div>
 </body>
 </html>

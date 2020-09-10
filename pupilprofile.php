@@ -31,6 +31,7 @@
     echo('The following is the profile for '.$_SESSION['loggedStudent']['firstName']);
 ?>
 </p>
+<p class="loggedin">You are logged in as <?php echo($_SESSION['loggedIn']['firstName']);?></p>
 </div>
 </body>
 </html>

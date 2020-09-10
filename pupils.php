@@ -1,7 +1,7 @@
 <?php
     session_start();
     ob_start();
-    if(!isset($_SESSION['username'])){
+    if(!isset($_SESSION['loggedIn'])){
         header("Location: index.php");
         die();
     }
@@ -31,6 +31,7 @@ include 'includes/teachermenu.php';
     <input type="submit" name="searchSubmit" value="search" onclick="if(validatePupilSearch()) this.form.submit()">
 </form>
 </div>
+<p class="loggedin">You are logged in as <?php echo($_SESSION['loggedIn']['firstName']);?></p>
 </div>
 </body>
 </html>

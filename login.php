@@ -21,9 +21,7 @@ else{
             echo 'No user account exists. Please check your credentials'."<br>";
         }
         else{
-            $_SESSION['username'] = $username;
-            $_SESSION['school'] = $school;
-            $_SESSION['firstName'] = $row['firstName'];
+            $_SESSION['loggedIn'] = $row;
             header("Location: home.php");
             die();
             }
