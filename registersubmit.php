@@ -27,9 +27,7 @@ else{
         $sqlfetchexec = $dbconn -> prepare($sqlfetch);
         $sqlfetchexec -> execute();
         $row = $sqlfetchexec->fetch();
-        $_SESSION['loggedStudentID'] = $row['studentID'];
-        $_SESSION['loggedStudentFirstName'] = $row['firstName'];
-        $_SESSION['loggedStudentSurname'] = $row['surname'];
+        $_SESSION['loggedStudent'] = $row;
         // redirect to pupil's profile
         header("Location: pupilprofile.php");
         die();

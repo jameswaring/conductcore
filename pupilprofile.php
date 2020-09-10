@@ -11,6 +11,7 @@
 <head>
     <?php
         include 'includes/head.php';
+        include_once 'includes/findpupilbyid.php';
     ?>
 </head>
 <body>
@@ -24,11 +25,10 @@
 <p class="welcome-message">
 <?php
     if(isset($_GET['id'])){
-        echo("You came from the search page");
+        //load logged pupil info in to loggedStudent session variable
+        $_SESSION['loggedStudent'] = findbyID($_GET['id']);
     }
-    else{
-        echo('The following is the profile for'.$_SESSION['loggedStudentFirstName']);
-    }
+    echo('The following is the profile for '.$_SESSION['loggedStudent']['firstName']);
 ?>
 </p>
 </div>
