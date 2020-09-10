@@ -13,14 +13,16 @@ else{
         $sname = $_POST['snameInput'];
         $sex = $_POST['sexInput'];
         $dob = $_POST['dobInput'];
+        $form = $_POST['formInput'];
         $schoolID = $_SESSION['school'];
-        $sqlstmnt2 = 'INSERT INTO students (`firstName`, `surname`, `dob`, `gender`, `schoolID`) VALUES (:firstName, :surname, :dob, :gender, :schoolID)';
+        $sqlstmnt2 = 'INSERT INTO students (`firstName`, `surname`, `dob`, `gender`, `formCode`, `schoolID`) VALUES (:firstName, :surname, :dob, :gender, :form, :schoolID)';
         $stmtUsr2 = $dbconn -> prepare($sqlstmnt2);
         $stmtUsr2 -> bindValue(':firstName', $fname);
         $stmtUsr2 -> bindValue(':surname', $sname);
         $stmtUsr2 -> bindValue(':dob', $dob);
         $stmtUsr2 -> bindValue(':gender', $sex);
         $stmtUsr2 -> bindValue(':schoolID', $schoolID);
+        $stmtUsr2 -> bindValue(':form', $form);
         $stmtUsr2 -> execute();
         // fetch pupil's ID for use in further queries
         $sqlfetch = 'SELECT * FROM students WHERE studentID = (SELECT MAX(studentID) from students)';

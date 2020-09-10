@@ -40,6 +40,7 @@ function validatePupilReg() {
     var sname = document.getElementsByName("snameInput")[0].value
     var sex = document.getElementsByName("sexInput")[0].value
     var dob = document.getElementsByName("dobInput")[0].value
+    var form = document.getElementsByName("formInput")[0].value
     var failed = false;
     if(!fname){
         document.getElementById("erfirstname").innerHTML = "No first name entered";
@@ -55,6 +56,10 @@ function validatePupilReg() {
     }
     if(!dob){
         document.getElementById("erdob").innerHTML = "No date of birth entered";
+        failed = true;
+    }
+    if(!form){
+        document.getElementById("erform").innerHTML = "No date of birth entered";
         failed = true;
     }
     else{

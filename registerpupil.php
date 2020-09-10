@@ -41,6 +41,23 @@ remain in case you wish to reactive it at a later date. To permanently remove a 
         <option value="female">Female</option>
     </select><div id="ersex"></div><br>
     DOB:    <input type="text" id="datepicker" name="dobInput"><div id="erdob"></p>
+    Form:      <select id="formInput" name="formInput">
+        <option value="7a">7a</option>
+        <option value="7b">7b</option>
+        <option value="7c">7c</option>
+        <option value="8a">8a</option>
+        <option value="8b">8b</option>
+        <option value="8c">8c</option>
+        <option value="9a">9a</option>
+        <option value="9b">9b</option>
+        <option value="9c">9c</option>
+        <option value="10a">10a</option>
+        <option value="10b">10b</option>
+        <option value="10c">10c</option>
+        <option value="11a">11a</option>
+        <option value="11b">11b</option>
+        <option value="11c">11c</option>
+    </select><div id="erform"></div><br>
     <input type="submit" name="pupilRegSubmit" value="Register" onclick="if(validatePupilReg()) this.form.submit()">
 </form>
 </div>
