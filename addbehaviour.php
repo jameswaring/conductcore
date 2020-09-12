@@ -18,14 +18,17 @@
 <?php
 include 'includes/teachermenu.php';
 ?>
-<h1>Add an intervention</h1>
+<?php
+
+  echo '<h1>Add a behaviour for'.$_SESSION['loggedStudent']['firstName'].'</h1>';
+
+?>
 <script>
   $( function() {
     $( "#incdate" ).datepicker();
   } );
 </script>
-<form action="login.php" method="post">
-    Student Name: <input type="text" autocomplete="off" name="usernameInput"><br>
+<form action="behavioursubmit.php" method="post">
     Incident Type: <select id="incType" name="incType">
         <option value="Classwork">classwork</option>
         <option value="Homework">homework</option>
@@ -39,7 +42,7 @@ include 'includes/teachermenu.php';
         <option value="Hate Speech">hatespeech</option>
       </select><br>
     Incident Description: <textarea name="descInput" autocomplete="off" rows="6" cols="50"></textarea><div id="erdesc"></div>
-    Incident Date: <input type="text" id="incdate" name="incdate"><div id="erdate"></div>
+    Incident Date: <input type="text" id="incDate" name="incDate"><div id="erdate"></div>
     <input type="submit" name="loginSubmit" value="login" onclick="if(validateLogin()) this.form.submit()">
 </form>
 <p class="loggedin">You are logged in as <?php echo($_SESSION['loggedIn']['firstName']);?></p>
