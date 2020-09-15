@@ -3,7 +3,7 @@
 function staffResponsibilities($id){
     session_start();
     ob_start();
-    include 'includes/db_connection.php';
+    include_once 'includes/db_connection.php';
         try {
             $dbconn = OpenCon();
             $sqlstmnt2 = 'SELECT studentID FROM responsibilities WHERE staffID= :staffID';

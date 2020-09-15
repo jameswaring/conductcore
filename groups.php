@@ -11,7 +11,8 @@
 <head>
     <?php
         include 'includes/head.php';
-        include_once 'includes/responsibilitysearch.php'
+        include_once 'includes/responsibilitysearch.php';
+        include_once 'includes/findpupilbyid.php';
     ?>
 </head>
 <body>
@@ -35,7 +36,8 @@ include 'includes/teachermenu.php';
     }
     else{
         foreach($found as $pupil){
-            echo($pupil["studentID"]."<br>");
+            $result = findbyID($pupil["studentID"]);
+            echo("<a href='pupilprofile.php?id=".$result['studentID']."'".">".$result['firstName'].'&nbsp;&nbsp;&nbsp;&nbsp;'.$result['surname'].'&nbsp;&nbsp;&nbsp;&nbsp;'.$result['dob']."</a><br>");
         }
     }
 ?>

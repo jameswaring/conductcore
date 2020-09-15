@@ -4,7 +4,7 @@
 function findbyID($id){
     session_start();
     ob_start();
-    include 'includes/db_connection.php';
+    include_once 'includes/db_connection.php';
         try {
             $dbconn = OpenCon();
             $sqlstmnt2 = 'SELECT * FROM students WHERE studentID = :studentID';
