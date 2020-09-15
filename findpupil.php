@@ -11,7 +11,7 @@ else{
         $dbconn = OpenCon();
         $fname = $_POST['pupilfname'];
         $sname = $_POST['pupilsname'];
-        $schoolID = $_SESSION['school'];
+        $schoolID = $_SESSION['loggedIn']['school'];
         $sqlstmnt2 = 'SELECT * FROM students WHERE firstName = :fname AND surname = :sname AND schoolID = :schoolID';
         $stmtUsr2 = $dbconn -> prepare($sqlstmnt2);
         $stmtUsr2 -> bindValue(':fname', $fname);
