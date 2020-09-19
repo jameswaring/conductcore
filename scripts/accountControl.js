@@ -66,3 +66,43 @@ function validatePupilReg() {
         return !failed
     }  
 }
+
+function validateIntervention() {
+    var intType = document.getElementsByName("intType")[0].value
+    var desc = document.getElementsByName("descInput")[0].value
+    var intDate = document.getElementsByName("passwordInput")[0].value
+    var failed = false;
+    if(!school){
+        document.getElementById("ertype").innerHTML = "No type entered";
+        failed = true;
+    }
+    if(!desc){
+        document.getElementById("erdesc").innerHTML = "No description entered";
+        failed = true;
+    }
+    if(!intDate){
+        document.getElementById("erdate").innerHTML = "No date entered";
+        failed = true;
+    }
+    return !failed;
+}
+
+function validateBehaviour() {
+    var incType = document.getElementsByName("incType")[0].value
+    var descInput = document.getElementsByName("descInput")[0].value
+    var incDate = document.getElementsByName("incDate")[0].value
+    var failed = false;
+    if(!incType){
+        document.getElementById("ertype").innerHTML = "No type entered";
+        failed = true;
+    }
+    if(!incDate){
+        document.getElementById("erdate").innerHTML = "No date entered";
+        failed = true;
+    }
+    if(!descInput){
+        document.getElementById("erdesc").innerHTML = "No description entered";
+        failed = true;
+    }
+    return !failed;
+}

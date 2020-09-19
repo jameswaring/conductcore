@@ -25,10 +25,15 @@ include 'includes/teachermenu.php';
 ?>
 <script>
   $( function() {
-    $( "#incDate" ).datepicker();
+    $( "#incDate" ).datepicker({
+      dateFormat: 'yy-mm-dd',
+      autoclose: true,
+      todayHighlight: true,
+      maxDate: new Date()
+    });
   } );
 </script>
-<form action="behavioursubmit.php" method="post">
+<form action="behavioursubmit.php" method="post" onsubmit="return validateBehaviour()">
     Incident Type: <select id="incType" name="incType">
         <option value="Classwork">classwork</option>
         <option value="Homework">homework</option>
@@ -40,10 +45,10 @@ include 'includes/teachermenu.php';
         <option value="Bullying">bullying</option>
         <option value="Homophobia">homophobia</option>
         <option value="Hate Speech">hatespeech</option>
-      </select><br>
-    Incident Description: <textarea name="descInput" autocomplete="off" rows="6" cols="50"></textarea><div id="erdesc"></div>
+      </select><br><div id="ertype"></div>
+    Incident Description: <textarea name="descInput" id="descInput" autocomplete="off" rows="6" cols="50"></textarea><div id="erdesc"></div>
     Incident Date: <input type="text" id="incDate" name="incDate"><div id="erdate"></div>
-    <input type="submit" name="loginSubmit" value="submit" onclick="if(validateLogin()) this.form.submit()">
+    <input type="submit">
 </form>
 <p class="loggedin">You are logged in as <?php echo($_SESSION['loggedIn']['firstName']);?></p>
 </div>

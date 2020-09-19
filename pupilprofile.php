@@ -36,7 +36,8 @@ Here is the information on this pupil. To add a behaviour point for this pupil, 
 
 ------pupil dashboard panel to go here-----
 
-<a href="addbehaviour.php" target="_self">Click to add behaviour point</a>
+<a href="addbehaviour.php" target="_self">Click to add a behaviour point</a>
+<a href="addintervention.php" target="_self">Click to add an intervention</a>
 <p class="loggedin">You are logged in as <?php echo($_SESSION['loggedIn']['firstName']);?></p>
 </div>
 </body>

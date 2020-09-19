@@ -7,13 +7,13 @@ if(empty($_POST)){
     header("Location: index.php");
 }
 else{
-    try {
         $dbconn = OpenCon();
-        $studentID = $_SESSION['loggedStudent']['studentID'];
+        $dbconn->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
+        $studentID = intval($_SESSION['loggedStudent']['studentID']);
         $schoolID = $_SESSION['loggedStudent']['schoolID'];
-        $logger = $_SESSION['loggedIn']['userID'];
+        $logger = intval($_SESSION['loggedIn']['userID']);
         $incType = $_POST['incType'];
-        $incDesc = $_POST['incDesc'];
+        $incDesc = $_POST['descInput'];
         $incDate = $_POST['incDate'];
         $sqlstmnt2 = 'INSERT INTO incidents (`type`, `description`, `date`, `studentID`, `userID`, `schoolID`) VALUES (:incType, :incDesc, :incDate, :studentID, :logger, :schoolID)';
         $stmtUsr2 = $dbconn -> prepare($sqlstmnt2);
@@ -30,15 +30,9 @@ else{
         $sqlfetchexec -> execute();
         $row = $sqlfetchexec->fetch();
         $_SESSION['loggedStudent'] = $row;
+        $id = $_SESSION['loggedStudent']['studentID'];
         // redirect to pupil's profile
-        header("Location: pupilprofile.php");
-        die();
-        } 
-    catch (PDOException $e) {
-        echo "DataBase Error: The user could not be added.<br>".$e->getMessage();
-    } 
-    catch (Exception $e) {
-        echo "General Error: The user could not be added.<br>".$e->getMessage();
-    }
+        //header("Location: pupilprofile.php?id=".$id);
+        //die();
 }
 ?>

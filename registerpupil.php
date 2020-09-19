@@ -33,14 +33,14 @@ remain in case you wish to reactive it at a later date. To permanently remove a 
     });
   });
   </script>
-<form action="registersubmit.php" method="post">
+<form action="registersubmit.php" method="post" onsubmit="return validatePupilReg()">
     First Name: <input type="text" autocomplete="off" name="fnameInput"><div id="erfirstname"></div><br>
     Surname: <input type="text" autocomplete="off" name="snameInput"><div id="ersurname"></div><br>
     Sex:      <select id="sexInput" name="sexInput">
         <option value="male">Male</option>
         <option value="female">Female</option>
     </select><div id="ersex"></div><br>
-    DOB:    <input type="text" id="datepicker" name="dobInput"><div id="erdob"></p>
+    DOB:    <input type="text" id="datepicker" name="dobInput"><div id="erdob"></div></p>
     Form:      <select id="formInput" name="formInput">
         <option value="7a">7a</option>
         <option value="7b">7b</option>
@@ -58,7 +58,7 @@ remain in case you wish to reactive it at a later date. To permanently remove a 
         <option value="11b">11b</option>
         <option value="11c">11c</option>
     </select><div id="erform"></div><br>
-    <input type="submit" name="pupilRegSubmit" value="Register" onclick="if(validatePupilReg()) this.form.submit()">
+    <input type="submit">
 </form>
 </div>
 <p class="loggedin">You are logged in as <?php echo($_SESSION['loggedIn']['firstName']);?></p>
