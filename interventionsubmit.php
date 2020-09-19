@@ -8,18 +8,18 @@ if(empty($_POST)){
 }
 else{
         $dbconn = OpenCon();
-        $dbconn->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
+        $dbconn->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         $studentID = intval($_SESSION['loggedStudent']['studentID']);
         $schoolID = $_SESSION['loggedStudent']['schoolID'];
         $logger = intval($_SESSION['loggedIn']['userID']);
-        $incType = $_POST['incType'];
-        $incDesc = $_POST['descInput'];
-        $incDate = $_POST['incDate'];
-        $sqlstmnt2 = 'INSERT INTO incidents (`type`, `description`, `date`, `studentID`, `userID`, `schoolID`) VALUES (:incType, :incDesc, :incDate, :studentID, :logger, :schoolID)';
+        $intType = $_POST['intType'];
+        $intDesc = $_POST['descInput'];
+        $intDate = $_POST['intDate'];
+        $sqlstmnt2 = 'INSERT INTO interventions(`type`, `comments`, `date`, `studentID`, `userID`, `schoolID`) VALUES (:intType,:intDesc,:intDate,:studentID,:logger,:schoolID)';
         $stmtUsr2 = $dbconn -> prepare($sqlstmnt2);
-        $stmtUsr2 -> bindValue(':incType', $incType);
-        $stmtUsr2 -> bindValue(':incDesc', $incDesc);
-        $stmtUsr2 -> bindValue(':incDate', $incDate);
+        $stmtUsr2 -> bindValue(':intType', $intType);
+        $stmtUsr2 -> bindValue(':intDesc', $intDesc);
+        $stmtUsr2 -> bindValue(':intDate', $intDate);
         $stmtUsr2 -> bindValue(':logger', $logger);
         $stmtUsr2 -> bindValue(':schoolID', $schoolID);
         $stmtUsr2 -> bindValue(':studentID', $studentID);
@@ -31,8 +31,8 @@ else{
         $row = $sqlfetchexec->fetch();
         $_SESSION['loggedStudent'] = $row;
         $id = $_SESSION['loggedStudent']['studentID'];
-        // redirect to pupil's profile
-        header("Location: pupilprofile.php?id=".$id);
-        die();
+        //redirect to pupil's profile
+        //header("Location: pupilprofile.php?id=".$id);
+        //die();
 }
 ?>

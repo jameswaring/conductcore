@@ -25,7 +25,12 @@ include 'includes/teachermenu.php';
 ?>
 <script>
   $( function() {
-    $( "#incDate" ).datepicker();
+    $( "#intDate" ).datepicker({
+      dateFormat: 'yy-mm-dd',
+      autoclose: true,
+      todayHighlight: true,
+      maxDate: new Date()
+    });
   } );
 </script>
 <form action="interventionsubmit.php" method="post">
