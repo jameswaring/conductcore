@@ -19,22 +19,29 @@
 <?php
     include 'includes/teachermenu.php';
 ?>
-<h1>Name of Pupil</h1>
-<p class="welcome-message">
 <?php
     if(isset($_GET['id'])){
         //load logged pupil info in to loggedStudent session variable
         $_SESSION['loggedStudent'] = findbyID($_GET['id']);
-        echo('The following is the profile for '.$_SESSION['loggedStudent']['firstName']);
+        echo('<h1>'.$_SESSION['loggedStudent']['firstName']." ".$_SESSION['loggedStudent']['surname'].'</h1>');
     }
     else{
         echo('Please find and select a pupil first');
     }
 ?>
 </p>
+<p class="welcome-message">
+
 Here is the information on this pupil. To add a behaviour point for this pupil, click the button underneath the profile
 
-------pupil dashboard panel to go here-----
+<div class="profilewrapper">
+    <div class="profileitem">pupil info</div>
+    <div class="profileitem">in core since</div>
+    <div class="profileitem">negative number</div>
+    <div class="profileitem">negative breakdown</div>
+    <div class="profileitem">interventions</div>
+    <div class="profileitem">most useful intervention</div>
+</div>
 
 <a href="addbehaviour.php" target="_self">Click to add a behaviour point</a>
 <a href="addintervention.php" target="_self">Click to add an intervention</a>

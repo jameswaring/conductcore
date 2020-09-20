@@ -32,7 +32,7 @@ else{
         $_SESSION['loggedStudent'] = $row;
         $id = $_SESSION['loggedStudent']['studentID'];
         //redirect to pupil's profile
-        //header("Location: pupilprofile.php?id=".$id);
-        //die();
+        header("Location: pupilprofile.php?id=".$id);
+        die();
 }
 ?>
