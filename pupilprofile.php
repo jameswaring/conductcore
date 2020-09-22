@@ -11,6 +11,7 @@
 <head>
     <?php
         include 'includes/head.php';
+        include 'includes/analysisscripts.php';
         include_once 'includes/findpupilbyid.php';
     ?>
 </head>
@@ -35,12 +36,12 @@
 Here is the information on this pupil. To add a behaviour point for this pupil, click the button underneath the profile
 
 <div class="profilewrapper">
-    <div class="profileitem">pupil info</div>
-    <div class="profileitem">in core since</div>
-    <div class="profileitem">negative number</div>
-    <div class="profileitem">negative breakdown</div>
-    <div class="profileitem">interventions</div>
-    <div class="profileitem">most useful intervention</div>
+    <div class="profileitem"><?php echo($_SESSION["name".'loggedStudent']['firstName'].'<br>'.$_SESSION['loggedStudent']['surname'].'<br>'.$_SESSION['loggedStudent']['dob'].'<br>'.$_SESSION['loggedStudent']['gender'].'<br>'.$_SESSION['loggedStudent']['year'].'<br>'.$_SESSION['loggedStudent']['formCode'].'<br>') ?></div>
+    <div class="profileitem">in core since<br><br><?php echo($_SESSION['loggedStudent']['creationdate']);?></div>
+    <div class="profileitem"><?php echo(negPoints($_SESSION['loggedStudent']['studentID']).'<br>'."total behaviour points");?></div>
+    <div class="profileitem"><?php echo(getInterventionNum($_SESSION['loggedStudent']['studentID']).'<br>'."total interventions");?></div>
+    <div class="profileitem"><?php echo(mostCommonInc($_SESSION['loggedStudent']['studentID']).'<br>'."most common sanction");?></div>
+    <div class="profileitem"><?php echo(mostCommonInt($_SESSION['loggedStudent']['studentID']).'<br>'."most common intervention");?></div>
 </div>
 
 <a href="addbehaviour.php" target="_self">Click to add a behaviour point</a>
