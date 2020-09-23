@@ -33,12 +33,14 @@
 </p>
 <p class="welcome-message">
 
-Here is the information on this pupil. To add a behaviour point for this pupil, click the button underneath the profile
+Here is the information on this pupil. 
+To see more, click the appropriate section.
+To add a behaviour point for this pupil, click the button underneath the profile. 
 
 <div class="profilewrapper">
     <div class="profileitem"><?php echo($_SESSION["name".'loggedStudent']['firstName'].'<br>'.$_SESSION['loggedStudent']['surname'].'<br>'.$_SESSION['loggedStudent']['dob'].'<br>'.$_SESSION['loggedStudent']['gender'].'<br>'.$_SESSION['loggedStudent']['year'].'<br>'.$_SESSION['loggedStudent']['formCode'].'<br>') ?></div>
     <div class="profileitem">in core since<br><br><?php echo($_SESSION['loggedStudent']['creationdate']);?></div>
-    <div class="profileitem"><?php echo(negPoints($_SESSION['loggedStudent']['studentID']).'<br>'."total behaviour points");?></div>
+    <a href="behaviour.php"><div class="profileitem"><?php echo(negPoints($_SESSION['loggedStudent']['studentID']).'<br>'."total behaviour points");?></div></a>
     <div class="profileitem"><?php echo(getInterventionNum($_SESSION['loggedStudent']['studentID']).'<br>'."total interventions");?></div>
     <div class="profileitem"><?php echo(mostCommonInc($_SESSION['loggedStudent']['studentID']).'<br>'."most common sanction");?></div>
     <div class="profileitem"><?php echo(mostCommonInt($_SESSION['loggedStudent']['studentID']).'<br>'."most common intervention");?></div>

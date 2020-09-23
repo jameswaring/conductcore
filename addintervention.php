@@ -35,13 +35,13 @@ include 'includes/teachermenu.php';
 </script>
 <form action="interventionsubmit.php" method="post">
     Incident Type: <select id="intType" name="intType">
-        <option value="schoolDet">in-school detention</option>
-        <option value="outDet">after-school detention</option>
-        <option value="call">phone call home</option>
-        <option value="parentMeet">parental meeting</option>
-        <option value="report">school report</option>
-        <option value="Sexism">internal isolation</option>
-        <option value="Truancy">external exclusion</option>
+        <option value="Internal Detention">in-school detention</option>
+        <option value="After School Detention">after-school detention</option>
+        <option value="Phone Call Home">phone call home</option>
+        <option value="Parental Meeting">parental meeting</option>
+        <option value="School Report">school report</option>
+        <option value="Internal Exclusion">internal isolation</option>
+        <option value="External Exclusion">external exclusion</option>
       </select><br><div id="ertype"></div>
     Incident Description: <textarea name="descInput" autocomplete="off" rows="6" cols="50"></textarea><div id="erdesc"></div>
     Incident Date: <input type="text" id="intDate" name="intDate"><div id="erdate"></div>
