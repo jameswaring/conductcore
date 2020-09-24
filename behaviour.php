@@ -15,6 +15,7 @@
 <head>
     <?php
         include 'includes/head.php';
+        include_once 'includes/analysisscripts.php';
     ?>
 </head>
 <body>
@@ -32,9 +33,11 @@ include 'includes/teachermenu.php';
 </p>
 
 <?php
-
-
-
+$behaviours = orderByType($_SESSION['loggedStudent']['studentID']);
+foreach($behaviours as $item){
+    echo($item["type"]);
+    echo($item["count(*)"]);
+}
 ?>
 
 <p class="loggedin">You are logged in as <?php echo($_SESSION['loggedIn']['firstName']);?></p>

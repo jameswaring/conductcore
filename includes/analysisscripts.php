@@ -78,4 +78,23 @@ function mostCommonInt($id){
             }
     return $rows;
 }
+
+function orderByType($id){
+    include_once 'includes/db_connection.php';
+    $dbconn = OpenCon();
+    $dbconn->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
+    $sqlstmnt2 = 'SELECT `type`, count(*) FROM `incidents` WHERE `studentID` = :studentID GROUP BY `type`';
+    $stmtUsr2 = $dbconn -> prepare($sqlstmnt2);
+    $intid = intval($id);
+    $stmtUsr2 -> bindValue(':studentID', $intid);
+    $stmtUsr2 -> execute();
+    $rows = $stmtUsr2->fetchAll();
+    //list found pupils
+    if(is_null($rows))
+            {
+                //list found pupils
+                return 0;
+            }
+    return $rows;
+}
 ?>
