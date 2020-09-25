@@ -33,12 +33,44 @@ include 'includes/teachermenu.php';
 </p>
 
 <?php
-$behaviours = orderByType($_SESSION['loggedStudent']['studentID']);
-foreach($behaviours as $item){
-    echo($item["type"]);
-    echo($item["count(*)"]);
-}
+	$behaviours = orderByType($_SESSION['loggedStudent']['studentID']);
+	$behTypes = array();
+	$behValues = array();
+	foreach($behaviours as $item){
+		$behTypes[] = $item["type"];
+		$behValues[] = intval($item["count(*)"]);
+		echo($item["type"]);
+	}
+	var_dump($behTypes);
+	echo($behValues);
+	// php arrays to JSON
+	$behaviourLabels = json_encode($behTypes, TRUE);
+	$behaviourValues = json_encode($behValues, TRUE);
 ?>
+
+<canvas id="pie-chart" width="800" height="450"></canvas>
+
+<script>
+
+new Chart(document.getElementById("pie-chart"), {
+    type: 'pie',
+    data: {
+      labels: [<?php echo($behaviourLabels); ?>],
+      datasets: [{
+        label: "Population (millions)",
+        backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850"],
+        data: [<?php echo($behaviourValues); ?>]
+      }]
+    },
+    options: {
+      title: {
+        display: true,
+        text: 'Breakdown of incident types for <?php echo($_SESSION['loggedStudent']['firstName']);  ?>'
+      }
+    }
+});
+
+</script>
 
 <p class="loggedin">You are logged in as <?php echo($_SESSION['loggedIn']['firstName']);?></p>
 </div>
