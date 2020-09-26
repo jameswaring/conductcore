@@ -39,27 +39,32 @@ include 'includes/teachermenu.php';
 	foreach($behaviours as $item){
 		$behTypes[] = $item["type"];
 		$behValues[] = intval($item["count(*)"]);
-		echo($item["type"]);
 	}
-	var_dump($behTypes);
-	echo($behValues);
 	// php arrays to JSON
-	$behaviourLabels = json_encode($behTypes, TRUE);
+	$behaviourLabels = json_encode($behTypes, TRUE); 
 	$behaviourValues = json_encode($behValues, TRUE);
 ?>
 
 <canvas id="pie-chart" width="800" height="450"></canvas>
 
 <script>
+// parse to js
+var strLabels = <?php echo($behaviourLabels); ?>;
+var strValues = <?php echo($behaviourValues); ?>;
+
+// parse as array
+//var arrLables = JSON.parse(strLables);
+//var arrValues = JSON.parse(strValues);
+console.log(strLabels, strValues)
 
 new Chart(document.getElementById("pie-chart"), {
     type: 'pie',
     data: {
-      labels: [<?php echo($behaviourLabels); ?>],
+      labels: strLabels,
       datasets: [{
-        label: "Population (millions)",
+        label: "Incident Type",
         backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850"],
-        data: [<?php echo($behaviourValues); ?>]
+        data: strValues,
       }]
     },
     options: {
