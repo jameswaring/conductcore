@@ -116,4 +116,24 @@ function orderedInterventions($id){
             }
     return $rows;
 }
+
+function behaviourByDate($id){
+    include_once 'includes/db_connection.php';
+    $dbconn = OpenCon();
+    $dbconn->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
+    $sqlstmnt2 = 'SELECT monthname(`date`), COUNT(*) AS `freq` FROM `incidents` WHERE `studentID` = 13 GROUP BY `date` ORDER BY `date` ASC';
+    $stmtUsr2 = $dbconn -> prepare($sqlstmnt2);
+    $intid = intval($id);
+    $stmtUsr2 -> bindValue(':studentID', $intid);
+    $stmtUsr2 -> execute();
+    $rows = $stmtUsr2->fetchAll();
+    //list found pupils
+    if(is_null($rows))
+            {
+                //list found pupils
+                return 0;
+            }
+    var_dump($rows);
+    //return $rows;
+}
 ?>

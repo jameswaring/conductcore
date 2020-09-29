@@ -12,6 +12,21 @@ flex-direction: column;
 align-items: center;
 }
 
+.profilewrapper{
+  margin-top: 30px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  flex-direction: row;
+}
+
+.profileitem{
+  flex: 0 0 40%;
+  border: 1px solid black;
+  padding: 50px;
+  margin-bottom: 30px;
+}
+
 h1{
   justify-content: center;
   display: flex;
@@ -94,21 +109,6 @@ button{
     font-size: 9px;
     font-family: Georgia, 'Times New Roman', Times, serif;
     text-align: right;
-}
-
-.profilewrapper{
-  margin-top: 30px;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  flex-direction: row;
-}
-
-.profileitem{
-  flex: 0 0 40%;
-  border: 1px solid black;
-  padding: 50px;
-  margin-bottom: 30px;
 }
 
 .chartholder{
