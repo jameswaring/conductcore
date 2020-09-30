@@ -33,9 +33,14 @@ include 'includes/teachermenu.php';
 </p>
 
 <?php
-	$behaviours = behaviourByDate($_SESSION['loggedStudent']['studentID']);
+  $behaviours = behaviourByDate($_SESSION['loggedStudent']['studentID']);
   // php arrays to JSON
-  var_dump($behaviours);
+  $behTypes = array();
+	$behValues = array();
+	foreach($behaviours as $item){
+    $behTypes[] = $item["monthname(`date`)"];
+	  $behValues[] = intval($item["freq"]);
+  }
 	$behaviourLabels = json_encode($behTypes, TRUE); 
 	$behaviourValues = json_encode($behValues, TRUE);
 ?>
@@ -47,17 +52,19 @@ include 'includes/teachermenu.php';
 var strLabels = <?php echo($behaviourLabels); ?>;
 var strValues = <?php echo($behaviourValues); ?>;
 
-// parse as array
-//var arrLables = JSON.parse(strLables);
-//var arrValues = JSON.parse(strValues);
-console.log(strLabels, strValues)
-
+var months = ["August", "September", "October", "November", "December", "January", "February", "March", "April", "May", "June", "July"];
+var values = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+for(var i = 0; i < strLabels.length; i++){
+  var a = months.indexOf(strLabels[i])
+  values[a] = strValues[a]
+}
+console.log(values)
 new Chart(document.getElementById("line-chart"), {
   type: 'line',
   data: {
-    labels: ["September", "October", "November", "December", "January", "February", "March", "April", "May", "June", "July"],
+    labels: months,
     datasets: [{ 
-        data: [0, 3, 5, 6, 3, 2, 4, 5, 6, 9, 4],
+        data: values,
         label: "incidents",
         borderColor: "#3e95cd",
         fill: false
