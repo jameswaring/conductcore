@@ -41,7 +41,7 @@ To add a behaviour point for this pupil, click the button underneath the profile
     <div class="profileitem"><?php echo($_SESSION["name".'loggedStudent']['firstName'].'<br>'.$_SESSION['loggedStudent']['surname'].'<br>'.$_SESSION['loggedStudent']['dob'].'<br>'.$_SESSION['loggedStudent']['gender'].'<br>'.$_SESSION['loggedStudent']['year'].'<br>'.$_SESSION['loggedStudent']['formCode'].'<br>') ?></div>
     <div class="profileitem">in core since<br><br><?php echo($_SESSION['loggedStudent']['creationdate']);?></div>
     <div class="profileitem"><a href="behaviourovertime.php"><?php echo(negPoints($_SESSION['loggedStudent']['studentID']).'<br>'."total behaviour points");?></div></a>
-    <div class="profileitem"><?php echo(getInterventionNum($_SESSION['loggedStudent']['studentID']).'<br>'."total interventions");?></div>
+    <div class="profileitem"><a href="interventionsovertime.php"><?php echo(getInterventionNum($_SESSION['loggedStudent']['studentID']).'<br>'."total interventions");?></div></a>
     <div class="profileitem"><a href="behaviour.php"><?php echo(mostCommonInc($_SESSION['loggedStudent']['studentID']).'<br>'."most common sanction");?></div></a>
     <div class="profileitem"><a href="intervention.php"><?php echo(mostCommonInt($_SESSION['loggedStudent']['studentID']).'<br>'."most common intervention");?></div></a>
 </div>

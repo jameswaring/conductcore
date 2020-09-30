@@ -29,11 +29,11 @@ include 'includes/teachermenu.php';
     
 ?>
 
-<p class="welcome-message">Below is a breakdown of the behaviour points over time
+<p class="welcome-message">Below is a breakdown of interventions over time
 </p>
 
 <?php
-  $behaviours = behaviourByDate($_SESSION['loggedStudent']['studentID']);
+  $behaviours = interventionsByDate($_SESSION['loggedStudent']['studentID']);
   // php arrays to JSON
   $behTypes = array();
 	$behValues = array();
@@ -51,7 +51,7 @@ include 'includes/teachermenu.php';
 // parse to js
 var strLabels = <?php echo($behaviourLabels); ?>;
 var strValues = <?php echo($behaviourValues); ?>;
-
+console.log(strLabels, strValues)
 var months = ["August", "September", "October", "November", "December", "January", "February", "March", "April", "May", "June", "July"];
 var values = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 for(var i = 0; i < strLabels.length; i++){

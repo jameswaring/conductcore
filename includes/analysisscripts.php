@@ -41,6 +41,23 @@ function getInterventionNum($id){
     return $rows;
 }
 
+function getInterventionNumWhole(){
+    include_once 'includes/db_connection.php';
+    $dbconn = OpenCon();
+    $dbconn->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
+    $sqlstmnt2 = 'SELECT COUNT(*) FROM `interventions`';
+    $stmtUsr2 = $dbconn -> prepare($sqlstmnt2);
+    $stmtUsr2 -> execute();
+    $rows = $stmtUsr2->fetchColumn();
+    //list found pupils
+    if(is_null($rows))
+            {
+                //list found pupils
+                return 0;
+            }
+    return $rows;
+}
+
 function mostCommonInc($id){
     include_once 'includes/db_connection.php';
     $dbconn = OpenCon();
@@ -49,6 +66,23 @@ function mostCommonInc($id){
     $stmtUsr2 = $dbconn -> prepare($sqlstmnt2);
     $intid = intval($id);
     $stmtUsr2 -> bindValue(':studentID', $intid);
+    $stmtUsr2 -> execute();
+    $rows = $stmtUsr2->fetchColumn();
+    //list found pupils
+    if(is_null($rows))
+            {
+                //list found pupils
+                return 0;
+            }
+    return $rows;
+}
+
+function mostCommonIncWhole(){
+    include_once 'includes/db_connection.php';
+    $dbconn = OpenCon();
+    $dbconn->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
+    $sqlstmnt2 = 'SELECT `type`, COUNT(`type`) AS `value_occurrence` FROM `incidents` GROUP BY `type` ORDER BY `value_occurrence` DESC LIMIT 1';
+    $stmtUsr2 = $dbconn -> prepare($sqlstmnt2);
     $stmtUsr2 -> execute();
     $rows = $stmtUsr2->fetchColumn();
     //list found pupils
@@ -79,6 +113,23 @@ function mostCommonInt($id){
     return $rows;
 }
 
+function mostCommonIntWhole(){
+    include_once 'includes/db_connection.php';
+    $dbconn = OpenCon();
+    $dbconn->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
+    $sqlstmnt2 = 'SELECT `type`, COUNT(`type`) AS `value_occurrence` FROM `interventions` GROUP BY `type` ORDER BY `value_occurrence` DESC LIMIT 1';
+    $stmtUsr2 = $dbconn -> prepare($sqlstmnt2);
+    $stmtUsr2 -> execute();
+    $rows = $stmtUsr2->fetchColumn();
+    //list found pupils
+    if(is_null($rows))
+            {
+                //list found pupils
+                return 0;
+            }
+    return $rows;
+}
+
 function orderByType($id){
     include_once 'includes/db_connection.php';
     $dbconn = OpenCon();
@@ -87,6 +138,23 @@ function orderByType($id){
     $stmtUsr2 = $dbconn -> prepare($sqlstmnt2);
     $intid = intval($id);
     $stmtUsr2 -> bindValue(':studentID', $intid);
+    $stmtUsr2 -> execute();
+    $rows = $stmtUsr2->fetchAll();
+    //list found pupils
+    if(is_null($rows))
+            {
+                //list found pupils
+                return 0;
+            }
+    return $rows;
+}
+
+function orderByTypeWhole(){
+    include_once 'includes/db_connection.php';
+    $dbconn = OpenCon();
+    $dbconn->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
+    $sqlstmnt2 = 'SELECT `type`, count(*) FROM `incidents` GROUP BY `type`';
+    $stmtUsr2 = $dbconn -> prepare($sqlstmnt2);
     $stmtUsr2 -> execute();
     $rows = $stmtUsr2->fetchAll();
     //list found pupils
@@ -117,11 +185,28 @@ function orderedInterventions($id){
     return $rows;
 }
 
+function orderedInterventionsWhole(){
+    include_once 'includes/db_connection.php';
+    $dbconn = OpenCon();
+    $dbconn->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
+    $sqlstmnt2 = 'SELECT `type`, count(*) FROM `interventions` GROUP BY `type`';
+    $stmtUsr2 = $dbconn -> prepare($sqlstmnt2);
+    $stmtUsr2 -> execute();
+    $rows = $stmtUsr2->fetchAll();
+    //list found pupils
+    if(is_null($rows))
+            {
+                //list found pupils
+                return 0;
+            }
+    return $rows;
+}
+
 function behaviourByDate($id){
     include_once 'includes/db_connection.php';
     $dbconn = OpenCon();
     $dbconn->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
-    $sqlstmnt2 = 'SELECT monthname(`date`), COUNT(*) AS `freq` FROM `incidents` WHERE `studentID` = 13 GROUP BY monthname(`date`) ORDER BY `date` ASC';
+    $sqlstmnt2 = 'SELECT monthname(`date`), COUNT(*) AS `freq` FROM `incidents` WHERE `studentID` = :studentID GROUP BY monthname(`date`) ORDER BY `date` ASC';
     $stmtUsr2 = $dbconn -> prepare($sqlstmnt2);
     $intid = intval($id);
     $stmtUsr2 -> bindValue(':studentID', $intid);
@@ -135,4 +220,58 @@ function behaviourByDate($id){
             }
     return $rows;
 }
+
+function behaviourByDateWhole(){
+    include_once 'includes/db_connection.php';
+    $dbconn = OpenCon();
+    $dbconn->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
+    $sqlstmnt2 = 'SELECT monthname(`date`), COUNT(*) AS `freq` FROM `incidents` GROUP BY monthname(`date`) ORDER BY `date` ASC';
+    $stmtUsr2 = $dbconn -> prepare($sqlstmnt2);
+    $stmtUsr2 -> execute();
+    $rows = $stmtUsr2->fetchAll();
+    //list found pupils
+    if(is_null($rows))
+            {
+                //list found pupils
+                return 0;
+            }
+    return $rows;
+}
+
+function interventionsByDate($id){
+    include_once 'includes/db_connection.php';
+    $dbconn = OpenCon();
+    $dbconn->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
+    $sqlstmnt2 = 'SELECT monthname(`date`), COUNT(*) AS `freq` FROM `interventions` WHERE `studentID` = :studentID GROUP BY monthname(`date`) ORDER BY `date` ASC';
+    $stmtUsr2 = $dbconn -> prepare($sqlstmnt2);
+    $intid = intval($id);
+    $stmtUsr2 -> bindValue(':studentID', $intid);
+    $stmtUsr2 -> execute();
+    $rows = $stmtUsr2->fetchAll();
+    //list found pupils
+    if(is_null($rows))
+            {
+                //list found pupils
+                return 0;
+            }
+    return $rows;
+}
+
+function interventionsByDateWhole($id){
+    include_once 'includes/db_connection.php';
+    $dbconn = OpenCon();
+    $dbconn->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
+    $sqlstmnt2 = 'SELECT monthname(`date`), COUNT(*) AS `freq` FROM `interventions` GROUP BY monthname(`date`) ORDER BY `date` ASC';
+    $stmtUsr2 = $dbconn -> prepare($sqlstmnt2);
+    $stmtUsr2 -> execute();
+    $rows = $stmtUsr2->fetchAll();
+    //list found pupils
+    if(is_null($rows))
+            {
+                //list found pupils
+                return 0;
+            }
+    return $rows;
+}
+
 ?>
