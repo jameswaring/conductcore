@@ -257,7 +257,7 @@ function interventionsByDate($id){
     return $rows;
 }
 
-function interventionsByDateWhole($id){
+function interventionsByDateWhole(){
     include_once 'includes/db_connection.php';
     $dbconn = OpenCon();
     $dbconn->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
@@ -271,6 +271,17 @@ function interventionsByDateWhole($id){
                 //list found pupils
                 return 0;
             }
+    return $rows;
+}
+
+function pupilsInCore(){
+    include_once 'includes/db_connection.php';
+    $dbconn = OpenCon();
+    $dbconn->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
+    $sqlstmnt2 = 'SELECT COUNT(*) FROM students';
+    $stmtUsr2 = $dbconn -> prepare($sqlstmnt2);
+    $stmtUsr2 -> execute();
+    $rows = $stmtUsr2->fetchColumn();
     return $rows;
 }
 
