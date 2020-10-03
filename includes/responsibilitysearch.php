@@ -4,7 +4,6 @@ function staffResponsibilities($id){
     session_start();
     ob_start();
     include_once 'includes/db_connection.php';
-        try {
             // check type of user and return either YEAR GROUP, FORM, ALL or NONE
             $dbconn = OpenCon();
             $sqlstmnt2 = 'SELECT job FROM users WHERE userID= :userID';
@@ -33,30 +32,44 @@ function staffResponsibilities($id){
             }
             else if($rows == "2"){
                 //return all year or years
+                $dbconn = OpenCon();
+                $sqlstmnt2 = 'SELECT chargeof FROM responsibilities WHERE staffID = :userID';
+                $intid = intval($id);
+                $stmtUsr2 = $dbconn -> prepare($sqlstmnt2);
+                $stmtUsr2 -> bindValue(':userID', $intid);
+                $stmtUsr2 -> execute();
+                $charge = $stmtUsr2->fetchColumn();
+                $charge = intval($charge);
+                // now fetch all students from year group
+                $sqlstmntcharge = 'SELECT * FROM students WHERE `year` = :charge';
+                $stmtUsr1 = $dbconn -> prepare($sqlstmntcharge);
+                $stmtUsr1 -> bindValue(':charge', $charge);
+                $stmtUsr1 -> execute();
+                $rows = $stmtUsr1 ->fetchAll();
                 return $rows;
             }
             else if($rows == "3"){
                 //return form
                 $dbconn = OpenCon();
-                $sqlstmnt2 = 'SELECT group FROM responsibilities WHERE userID= :userID';
+                $sqlstmnt2 = 'SELECT chargeof FROM responsibilities WHERE staffID = :userID';
                 $intid = intval($id);
                 $stmtUsr2 = $dbconn -> prepare($sqlstmnt2);
                 $stmtUsr2 -> bindValue(':userID', $intid);
                 $stmtUsr2 -> execute();
-                $rows = $stmtUsr2->fetchColumn();
+                $charge = $stmtUsr2->fetchColumn();
+                // now fetch all students from year group
+                $sqlstmntcharge = 'SELECT * FROM students WHERE `formCode` = :charge';
+                $stmtUsr1 = $dbconn -> prepare($sqlstmntcharge);
+                $stmtUsr1 -> bindValue(':charge', $charge);
+                $stmtUsr1 -> execute();
+                $rows = $stmtUsr1 ->fetchAll();
+                return $rows;
                 
             }
             else{
                 // return no pupils
-                return 
+                header("Location: noresp.php");
             }
-
-        catch (PDOException $e) {
-            echo "DataBase Error: The user could not be found.<br>".$e->getMessage();
-        } 
-        catch (Exception $e) {
-            echo "General Error: The user could not be found.<br>".$e->getMessage();
         }
-}
 
 ?>

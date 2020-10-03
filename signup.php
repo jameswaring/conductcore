@@ -1,32 +1,15 @@
-<?php
+<!DOCTYPE html>
+<html>
+<body>
 
-include 'includes/db_connection.php';
-
-if(empty($_POST)){
-    header("Location: index.php");
-}
-else{
-    try {
-        $dbconn = OpenCon();
-        $username = $_POST['usernameInput'];
-        $password = $_POST['passInput'];
-        $passHash = password_hash($password, PASSWORD_DEFAULT);
-        $school = $_POST['schoolInput'];
-        $sqlstmnt2 = 'INSERT INTO users(username, password, school) VALUES(:username, :passHash, :school)';
-        $stmtUsr2 = $dbconn -> prepare($sqlstmnt2);
-        $stmtUsr2 -> bindValue(':username', $username);
-        $stmtUsr2 -> bindValue(':passHash', $passHash);
-        $stmtUsr2 -> bindValue(':school', $school);
-        $stmtUsr2 -> execute();
-        header("Location: home.php");
-        die();
-    } 
-    catch (PDOException $e) {
-        echo "DataBase Error: The user could not be added.<br>".$e->getMessage();
-    } 
-    catch (Exception $e) {
-        echo "General Error: The user could not be added.<br>".$e->getMessage();
-    }
-}
-
-?>
+<form action="registersubmit.php" method="post">
+    username: <input type="text" autocomplete="off" name="usernameInput"><div id="erfirstname"></div><br>
+    First Name: <input type="text" autocomplete="off" name="fnameInput"><div id="erfirstname"></div><br>
+    Surname: <input type="text" autocomplete="off" name="surnameInput"><div id="ersurname"></div><br>
+    Password <input type="text" autocomplete="off" name="passInput"><div id="ersurname"></div><br>
+    School:    <input type="text" id="datepick" name="schoolInput"><div id="erdob"></div><br>
+    Job:    <input type="text" id="datepick" name="jobInput"><div id="erdob"></div><br>
+    <input type="submit">
+</form>
+</body>
+</html>

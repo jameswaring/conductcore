@@ -27,11 +27,13 @@ remain in case you wish to reactive it at a later date. To permanently remove a 
 <div class="regPupForm">
 <script>
   $( function() {
-    $( "#datepicker" ).datepicker({
-        dateFormat: 'yy-mm-dd',
-        endDate: new Date()
+    $( "#datepick" ).datepicker({
+      dateFormat: 'yy-mm-dd',
+      autoclose: true,
+      todayHighlight: true,
+      maxDate: new Date()
     });
-  });
+  } );
   </script>
 <form action="registersubmit.php" method="post" onsubmit="return validatePupilReg()">
     First Name: <input type="text" autocomplete="off" name="fnameInput"><div id="erfirstname"></div><br>
@@ -40,7 +42,7 @@ remain in case you wish to reactive it at a later date. To permanently remove a 
         <option value="male">Male</option>
         <option value="female">Female</option>
     </select><div id="ersex"></div><br>
-    DOB:    <input type="text" id="datepicker" name="dobInput"><div id="erdob"></div></p>
+    DOB:    <input type="text" id="datepick" name="dobInput"><div id="erdob"></div><br>
     Year:   <select id="yearInput" name="yearInput">
         <option value="7">7</option>
         <option value="8">8</option>
