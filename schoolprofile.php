@@ -37,10 +37,10 @@ Here is the information on the whole school's core.
 To see more, click the appropriate section.
 
 <div class="profilewrapper">
-    <div class="profileitem"><?php echo(pupilsInCore()."<br><br>total number of pupils");?></div>
+    <div class="profileitem"><a href="pupilsincore.php"><?php echo(pupilsInCore()."<br><br>total number of pupils");?></div></a>
     <div class="profileitem"><?php echo("total number of pupils");?></div>
-    <div class="profileitem"><a href="behaviourovertimewhole.php"><?php echo("Behaviour points this year")?></div></a>
-    <div class="profileitem"><a href="interventionsovertimewhole.php"><?php echo("interventions this year");?></div></a>
+    <div class="profileitem"><a href="behaviourovertimewhole.php"><?php echo(negPointsWhole()."<br><br>Behaviour points this year");?></div></a>
+    <div class="profileitem"><a href="interventionsovertimewhole.php"><?php echo(getInterventionNumWhole()."<br><br>Interventions this year");?></div></a>
     <div class="profileitem"><a href="behaviourwhole.php"><?php echo(mostCommonInc($_SESSION['loggedStudent']['studentID']).'<br>'."most common behaviour");?></div></a>
     <div class="profileitem"><a href="interventionwhole.php"><?php echo(mostCommonInt($_SESSION['loggedStudent']['studentID']).'<br>'."most common intervention");?></div></a>
 </div>

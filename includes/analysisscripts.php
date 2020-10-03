@@ -21,6 +21,22 @@ function negPoints($id){
     return $rows;
         }
 
+function negPointsWhole(){
+    include_once 'includes/db_connection.php';
+    $dbconn = OpenCon();
+    $dbconn->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
+    $sqlstmnt2 = 'SELECT COUNT(*) FROM `incidents`';
+    $stmtUsr2 = $dbconn -> prepare($sqlstmnt2);
+    $stmtUsr2 -> execute();
+    $rows = $stmtUsr2->fetchColumn();
+    //list found pupils
+    if(is_null($rows))
+            {
+                //list found pupils
+                return 0;
+            }
+    return $rows;
+        }
 
 function getInterventionNum($id){
     include_once 'includes/db_connection.php';
@@ -285,4 +301,6 @@ function pupilsInCore(){
     return $rows;
 }
 
+//working sql for current year
+// select * from incidents where `date` >= concat(year(current_date), '-09-01')
 ?>
