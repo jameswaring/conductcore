@@ -2,7 +2,7 @@
 <html>
 <body>
 
-<form action="registersubmit.php" method="post">
+<form action="signupsubmit.php" method="post">
     username: <input type="text" autocomplete="off" name="usernameInput"><div id="erfirstname"></div><br>
     First Name: <input type="text" autocomplete="off" name="fnameInput"><div id="erfirstname"></div><br>
     Surname: <input type="text" autocomplete="off" name="surnameInput"><div id="ersurname"></div><br>

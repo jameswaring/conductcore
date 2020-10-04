@@ -25,7 +25,7 @@ else{
         $stmtUsr2 -> bindValue(':school', $school);
         $stmtUsr2 -> bindValue(':job', $job);
         $stmtUsr2 -> execute();
-        header("Location: home.php");
+        //header("Location: index.php");
         die();
         } 
     catch (PDOException $e) {

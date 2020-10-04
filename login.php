@@ -9,7 +9,7 @@ else{
     try {
         $dbconn = OpenCon();
         $username = $_POST['usernameInput'];
-        $password = $_POST['passInput'];
+        $password = $_POST['passwordInput'];
         $school = $_POST['schoolInput'];
         $sqlstmnt2 = 'SELECT * FROM users WHERE username = :username AND school = :school';
         $stmtUsr2 = $dbconn -> prepare($sqlstmnt2);
@@ -17,7 +17,8 @@ else{
         $stmtUsr2 -> bindValue(':school', $school);
         $stmtUsr2 -> execute();
         $row = $stmtUsr2->fetch();
-        if(!password_verify($_POST['passInput'], $row['password'])) {
+        if(!password_verify($_POST['passwordInput'], $row['password'])) {
+            echo($_POST['passwordInput'].'<br><br>'.$row['password']);
             echo 'No user account exists. Please check your credentials'."<br>";
         }
         else{
