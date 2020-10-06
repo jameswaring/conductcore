@@ -23,7 +23,7 @@
 <?php
 include 'includes/teachermenu.php';
 ?>
-<h1>Behaviour Points</h1>
+<h1>Interventions</h1>
 
 <?php
     
@@ -65,7 +65,7 @@ new Chart(document.getElementById("line-chart"), {
     labels: months,
     datasets: [{ 
         data: values,
-        label: "incidents",
+        label: "interventions",
         borderColor: "#3e95cd",
         fill: false
       }

@@ -38,7 +38,7 @@ To see more, click the appropriate section.
 To add a behaviour point for this pupil, click the button underneath the profile. 
 
 <div class="profilewrapper">
-    <div class="profileitem"><?php echo($_SESSION["name".'loggedStudent']['firstName'].'<br>'.$_SESSION['loggedStudent']['surname'].'<br>'.$_SESSION['loggedStudent']['dob'].'<br>'.$_SESSION['loggedStudent']['gender'].'<br>'.$_SESSION['loggedStudent']['year'].'<br>'.$_SESSION['loggedStudent']['formCode'].'<br>') ?></div>
+    <div class="profileitem"><?php echo("Name: ".$_SESSION['loggedStudent']['firstName']." ".$_SESSION['loggedStudent']['surname'].'<br>'."Date of Birth: ".$_SESSION['loggedStudent']['dob'].'<br>'."Gender: ".$_SESSION['loggedStudent']['gender'].'<br>'."Year Group: ".$_SESSION['loggedStudent']['year'].'<br>'."Form: ".$_SESSION['loggedStudent']['formCode'].'<br>') ?></div>
     <div class="profileitem">in core since<br><br><?php echo($_SESSION['loggedStudent']['creationdate']);?></div>
     <div class="profileitem"><a href="behaviourovertime.php"><?php echo(negPoints($_SESSION['loggedStudent']['studentID']).'<br>'."total behaviour points");?></div></a>
     <div class="profileitem"><a href="interventionsovertime.php"><?php echo(getInterventionNum($_SESSION['loggedStudent']['studentID']).'<br>'."total interventions");?></div></a>

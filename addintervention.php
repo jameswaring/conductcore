@@ -26,7 +26,7 @@ include 'includes/teachermenu.php';
 <script>
   $( function() {
     $( "#intDate" ).datepicker({
-      dateFormat: 'yy-mm-dd',
+      format: 'yyyy-mm-dd',
       autoclose: true,
       todayHighlight: true,
       maxDate: new Date()

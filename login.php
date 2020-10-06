@@ -17,8 +17,7 @@ else{
         $stmtUsr2 -> bindValue(':school', $school);
         $stmtUsr2 -> execute();
         $row = $stmtUsr2->fetch();
-        if(!password_verify($_POST['passwordInput'], $row['password'])) {
-            echo($_POST['passwordInput'].'<br><br>'.$row['password']);
+        if(!password_verify($password, $row['password'])) {
             echo 'No user account exists. Please check your credentials'."<br>";
         }
         else{

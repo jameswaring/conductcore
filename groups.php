@@ -37,7 +37,7 @@ include 'includes/teachermenu.php';
     else{
         foreach($found as $pupil){
             $result = findbyID($pupil["studentID"]);
-            echo("<a href='pupilprofile.php?id=".$result['studentID']."'".">".$result['firstName'].'&nbsp;&nbsp;&nbsp;&nbsp;'.$result['surname'].'&nbsp;&nbsp;&nbsp;&nbsp;'.$result['dob']."</a><br>");
+            echo("<a href='pupilprofile.php?id=".$result['studentID']."'".">".$result['firstName'].'&nbsp;&nbsp;&nbsp;&nbsp;'.$result['surname'].'&nbsp;&nbsp;&nbsp;&nbsp;'."</a><br>");
         }
     }
 ?>

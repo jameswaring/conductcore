@@ -12,7 +12,6 @@ function staffResponsibilities($id){
             $stmtUsr2 -> bindValue(':userID', $intid);
             $stmtUsr2 -> execute();
             $rows = $stmtUsr2->fetchColumn();
-            var_dump($rows);
             //now check their responsibility
             //1 --- head
             //2 --- headofyear
@@ -27,7 +26,7 @@ function staffResponsibilities($id){
                 $stmtUsr2 = $dbconn -> prepare($sqlstmnt2);
                 $stmtUsr2 -> bindValue(':userID', $intid);
                 $stmtUsr2 -> execute();
-                $rows = $stmtUsr2->fetchColumn();
+                $rows = $stmtUsr2->fetchAll();
                 return $rows;
             }
             else if($rows == "2"){

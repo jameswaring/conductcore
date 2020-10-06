@@ -20,16 +20,6 @@
 <?php
     include 'includes/teachermenu.php';
 ?>
-<?php
-    if(isset($_GET['id'])){
-        //load logged pupil info in to loggedStudent session variable
-        $_SESSION['loggedStudent'] = findbyID($_GET['id']);
-        echo('<h1>Whole School Profile</h1>');
-    }
-    else{
-        echo('Please find and select a pupil first');
-    }
-?>
 </p>
 <p class="welcome-message">
 
@@ -38,7 +28,7 @@ To see more, click the appropriate section.
 
 <div class="profilewrapper">
     <div class="profileitem"><a href="pupilsincore.php"><?php echo(pupilsInCore()."<br><br>total number of pupils");?></div></a>
-    <div class="profileitem"><?php echo("total number of pupils");?></div>
+    <div class="profileitem"><?php echo("most logged pupil");?></div>
     <div class="profileitem"><a href="behaviourovertimewhole.php"><?php echo(negPointsWhole()."<br><br>Behaviour points this year");?></div></a>
     <div class="profileitem"><a href="interventionsovertimewhole.php"><?php echo(getInterventionNumWhole()."<br><br>Interventions this year");?></div></a>
     <div class="profileitem"><a href="behaviourwhole.php"><?php echo(mostCommonInc($_SESSION['loggedStudent']['studentID']).'<br>'."most common behaviour");?></div></a>

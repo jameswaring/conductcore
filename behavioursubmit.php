@@ -24,12 +24,6 @@ else{
         $stmtUsr2 -> bindValue(':schoolID', $schoolID);
         $stmtUsr2 -> bindValue(':studentID', $studentID);
         $stmtUsr2 -> execute();
-        // fetch pupil's ID for use in further queries
-        $sqlfetch = 'SELECT * FROM students WHERE studentID = (SELECT MAX(studentID) from students)';
-        $sqlfetchexec = $dbconn -> prepare($sqlfetch);
-        $sqlfetchexec -> execute();
-        $row = $sqlfetchexec->fetch();
-        $_SESSION['loggedStudent'] = $row;
         $id = $_SESSION['loggedStudent']['studentID'];
         // redirect to pupil's profile
         header("Location: pupilprofile.php?id=".$id);
