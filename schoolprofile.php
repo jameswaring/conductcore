@@ -31,8 +31,8 @@ To see more, click the appropriate section.
     <div class="profileitem"><?php echo("most logged pupil");?></div>
     <div class="profileitem"><a href="behaviourovertimewhole.php"><?php echo(negPointsWhole()."<br><br>Behaviour points this year");?></div></a>
     <div class="profileitem"><a href="interventionsovertimewhole.php"><?php echo(getInterventionNumWhole()."<br><br>Interventions this year");?></div></a>
-    <div class="profileitem"><a href="behaviourwhole.php"><?php echo(mostCommonInc($_SESSION['loggedStudent']['studentID']).'<br>'."most common behaviour");?></div></a>
-    <div class="profileitem"><a href="interventionwhole.php"><?php echo(mostCommonInt($_SESSION['loggedStudent']['studentID']).'<br>'."most common intervention");?></div></a>
+    <div class="profileitem"><a href="behaviourwhole.php"><?php echo(mostCommonIncWhole().'<br>'."most common behaviour");?></div></a>
+    <div class="profileitem"><a href="interventionwhole.php"><?php echo(mostCommonIntWhole().'<br>'."most common intervention");?></div></a>
 </div>
 
 <p class="loggedin">You are logged in as <?php echo($_SESSION['loggedIn']['firstName']);?></p>

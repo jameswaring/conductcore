@@ -34,16 +34,16 @@ include 'includes/teachermenu.php';
 </script>
 <form action="behavioursubmit.php" method="post" onsubmit="return validateBehaviour()">
     Incident Type: <select id="incType" name="incType">
-        <option value="Classwork">classwork</option>
-        <option value="Homework">homework</option>
-        <option value="Break incident">break</option>
-        <option value="Lunch Incident">lunch</option>
-        <option value="Racism">racism</option>
-        <option value="Sexism">sexism</option>
-        <option value="Truancy">truancy</option>
-        <option value="Bullying">bullying</option>
-        <option value="Homophobia">homophobia</option>
-        <option value="Hate Speech">hatespeech</option>
+        <option value="Classwork">Classwork</option>
+        <option value="Homework">Homework</option>
+        <option value="Break incident">Break Incident</option>
+        <option value="Lunch Incident">Lunch Incident</option>
+        <option value="Racism">Racism</option>
+        <option value="Sexism">Sexism</option>
+        <option value="Truancy">Truancy</option>
+        <option value="Bullying">Bullying</option>
+        <option value="Homophobia">Homophobia</option>
+        <option value="Hate Speech">Hatespeech</option>
       </select><br><div id="ertype"></div>
     Incident Description: <textarea name="descInput" id="descInput" autocomplete="off" rows="6" cols="50"></textarea><div id="erdesc"></div>
     Incident Date: <input type="text" id="incDate" name="incDate"><div id="erdate"></div>
