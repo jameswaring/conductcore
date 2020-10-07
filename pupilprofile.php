@@ -29,6 +29,11 @@
     else{
         echo('Please find and select a pupil first');
     }
+
+    if($_SESSION['loggedIn']['job'] == 4){
+        header("Location: teacherpupprof.php?id=".$_GET['id']);
+    }
+
 ?>
 </p>
 <p class="welcome-message">
