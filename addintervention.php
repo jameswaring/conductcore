@@ -20,7 +20,7 @@ include 'includes/teachermenu.php';
 ?>
 <?php
 
-  echo '<h1>Add a behaviour for '.$_SESSION['loggedStudent']['firstName'].'</h1>';
+  echo '<h1>Add an intervention for '.$_SESSION['loggedStudent']['firstName'].'</h1>';
 
 ?>
 <script>
@@ -34,7 +34,7 @@ include 'includes/teachermenu.php';
   } );
 </script>
 <form action="interventionsubmit.php" method="post">
-    Incident Type: <select id="intType" name="intType">
+    Intervention Type: <select id="intType" name="intType">
         <option value="Internal Detention">In-school Detention</option>
         <option value="After School Detention">After-school Detention</option>
         <option value="Phone Call Home">Phone Call Home</option>
@@ -43,8 +43,8 @@ include 'includes/teachermenu.php';
         <option value="Internal Exclusion">Internal Isolation</option>
         <option value="External Exclusion">External Exclusion</option>
       </select><br><div id="ertype"></div>
-    Incident Description: <textarea name="descInput" autocomplete="off" rows="6" cols="50"></textarea><div id="erdesc"></div>
-    Incident Date: <input type="text" id="intDate" name="intDate"><div id="erdate"></div>
+    Intervention Description: <textarea name="descInput" autocomplete="off" rows="6" cols="50"></textarea><div id="erdesc"></div>
+    Intervention Date: <input type="text" id="intDate" name="intDate"><div id="erdate"></div>
     <input type="submit" name="loginSubmit" value="submit" onclick="if(validateIntervention()) this.form.submit()">
 </form>
 <p class="loggedin">You are logged in as <?php echo($_SESSION['loggedIn']['firstName']);?></p>

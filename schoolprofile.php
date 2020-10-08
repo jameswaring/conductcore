@@ -19,6 +19,9 @@
 <div class="content">
 <?php
     include 'includes/teachermenu.php';
+    $commonArray = mostLoggedPupil();
+    $commonf = $commonArray[0]['firstName'];
+    $commons = $commonArray[0]['surname'];
 ?>
 </p>
 <p class="welcome-message">
@@ -28,7 +31,7 @@ To see more, click the appropriate section.
 
 <div class="profilewrapper">
     <div class="profileitem"><a href="pupilsincore.php"><?php echo(pupilsInCore()."<br><br>total number of pupils");?></div></a>
-    <div class="profileitem"><?php echo("most logged pupil");?></div>
+    <div class="profileitem"><?php echo("most logged pupil"."<br><br>".$commonf." ".$commons);?></div>
     <div class="profileitem"><a href="behaviourovertimewhole.php"><?php echo(negPointsWhole()."<br><br>Behaviour points this year");?></div></a>
     <div class="profileitem"><a href="interventionsovertimewhole.php"><?php echo(getInterventionNumWhole()."<br><br>Interventions this year");?></div></a>
     <div class="profileitem"><a href="behaviourwhole.php"><?php echo(mostCommonIncWhole().'<br>'."most common behaviour");?></div></a>

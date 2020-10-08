@@ -301,6 +301,25 @@ function pupilsInCore(){
     return $rows;
 }
 
+function mostLoggedPupil(){
+    include_once 'includes/db_connection.php';
+    $dbconn = OpenCon();
+    $dbconn->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
+    $sqlstmnt2 = 'SELECT `studentID`, COUNT(`studentID`) AS `common` FROM `incidents` GROUP BY `studentID` ORDER BY `common` DESC LIMIT 1;';
+    $stmtUsr2 = $dbconn -> prepare($sqlstmnt2);
+    $stmtUsr2 -> execute();
+    $rows = $stmtUsr2->fetchColumn();
+    $common = $rows;
+    $common = intval($common);
+    $sqlfind = 'SELECT `firstName`, `surname` FROM `students` WHERE `studentID` = :mostcommon';
+    $stmtfind = $dbconn -> prepare($sqlfind);
+    $stmtfind -> bindValue(':mostcommon', $common);
+    $stmtfind -> execute();
+    $mstcmn = $stmtfind->fetchAll();
+    return $mstcmn;
+}
+
+
 //working sql for current year
 // select * from incidents where `date` >= concat(year(current_date), '-09-01')
 ?>
