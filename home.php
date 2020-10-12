@@ -11,28 +11,13 @@
 <head>
     <?php
         include 'includes/head.php';
+        include 'includes/menuloader.php';
     ?>
 </head>
 <body>
 <div class="content">
 <?php
-if($_SESSION['loggedIn']['job'] == 1){
-    include 'includes/headmenu.php';
-}
-else if($_SESSION['loggedIn']['job'] == 2){
-    include 'includes/hoymenu.php';
-}
-else if($_SESSION['loggedIn']['job'] == 3){
-    include 'includes/formtmenu.php';
-}
-else if($_SESSION['loggedIn']['job'] == 4){
-    include 'includes/teachermenu.php';
-}
-else{
-    include 'includes/teachermenu.php';
-}
-
-
+    loadMenu();
 ?>
 <h1>Welcome to Conduct Core</h1>
 <p class="welcome-message">The idea of Conduct Core is simple. You track the behaviour of pupils on a live basis.

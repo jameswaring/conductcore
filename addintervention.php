@@ -11,12 +11,13 @@
 <head>
     <?php
         include 'includes/head.php';
+        include 'includes/menuloader.php';
     ?>
 </head>
 <body>
 <div class="content">
 <?php
-include 'includes/teachermenu.php';
+    loadMenu();
 ?>
 <?php
 

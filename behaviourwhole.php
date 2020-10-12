@@ -11,13 +11,13 @@
 <head>
     <?php
         include 'includes/head.php';
-        include_once 'includes/analysisscripts.php';
+        include 'includes/menuloader.php';
     ?>
 </head>
 <body>
 <div class="content">
 <?php
-include 'includes/teachermenu.php';
+    loadMenu();
 ?>
 <h1>Behaviour Points</h1>
 

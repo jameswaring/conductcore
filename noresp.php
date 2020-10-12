@@ -11,12 +11,16 @@
 <head>
     <?php
         include 'includes/head.php';
+        include 'includes/menuloader.php';
+        include 'includes/findpupilbyid.php';
+        include 'includes/responsibilitysearch.php';
+        include 'includes/analysisscripts.php';
     ?>
 </head>
 <body>
 <div class="content">
 <?php
-include 'includes/teachermenu.php';
+    loadMenu();
 ?>
 <h1>Behaviour</h1>
 <p class="welcome-message">You are not responsible for any pupils

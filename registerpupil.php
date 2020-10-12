@@ -7,13 +7,16 @@ ob_start();
 <head>
     <?php
         include 'includes/head.php';
+        include 'includes/menuloader.php';
+        include 'includes/findpupilbyid.php';
+        include 'includes/responsibilitysearch.php';
+        include 'includes/analysisscripts.php';
     ?>
-    <script type="text/javascript" src="scripts/accountControl.js"></script>
 </head>
 <body>
 <div class="content">
 <?php
-include 'includes/teachermenu.php';
+    loadMenu();
 ?>
 <h1>Add a Pupil</h1>
 <p class="welcome-message">Use the form below to register a pupil for your Conduct Core. Registering a pupil

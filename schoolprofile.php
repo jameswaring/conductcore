@@ -11,14 +11,16 @@
 <head>
     <?php
         include 'includes/head.php';
+        include 'includes/menuloader.php';
+        include 'includes/findpupilbyid.php';
+        include 'includes/responsibilitysearch.php';
         include 'includes/analysisscripts.php';
-        include_once 'includes/findpupilbyid.php';
     ?>
 </head>
 <body>
 <div class="content">
 <?php
-    include 'includes/teachermenu.php';
+    loadMenu();
     $commonArray = mostLoggedPupil();
     $commonf = $commonArray[0]['firstName'];
     $commons = $commonArray[0]['surname'];

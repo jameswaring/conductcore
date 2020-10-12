@@ -15,13 +15,16 @@
 <head>
     <?php
         include 'includes/head.php';
-        include_once 'includes/analysisscripts.php';
+        include 'includes/menuloader.php';
+        include 'includes/findpupilbyid.php';
+        include 'includes/responsibilitysearch.php';
+        include 'includes/analysisscripts.php';
     ?>
 </head>
 <body>
 <div class="content">
 <?php
-include 'includes/teachermenu.php';
+    loadMenu();
 ?>
 <h1>Interventions</h1>
 
