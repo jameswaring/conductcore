@@ -11,6 +11,7 @@
 <head>
     <?php
         include 'includes/head.php';
+        include 'includes/analysisscripts.php';
         include_once 'includes/responsibilitysearch.php';
         include_once 'includes/findpupilbyid.php';
     ?>
@@ -35,10 +36,32 @@ include 'includes/teachermenu.php';
         echo "You are not responsible for any pupils";
     }
     else{
-        foreach($found as $pupil){
-            $result = findbyID($pupil["studentID"]);
-            echo("<a href='pupilprofile.php?id=".$result['studentID']."'".">".$result['firstName'].'&nbsp;&nbsp;&nbsp;&nbsp;'.$result['surname'].'&nbsp;&nbsp;&nbsp;&nbsp;'."</a><br>");
-        }
+        echo("<table class = 'blueTable'>");
+            echo("<tr>");
+                echo("<th>First Name</th>");
+                echo("<th>Surname</th>");
+                echo("<th>Today's Behaviour Points</th>");
+            echo("</tr>");
+        foreach($found as $pupils){
+            echo("<tr>");
+                echo("<td>");
+                echo("<a href='pupilprofile.php?id=".$pupils['studentID']."'>");
+                echo($pupils['firstName']);
+                echo("</a>");
+                echo("</td>");
+                echo("<td>");
+                echo("<a href='pupilprofile.php?id=".$pupils['studentID']."'>");
+                echo($pupils['surname']);
+                echo("</a>");
+                echo("</td>");
+                echo("<td>");
+                echo("<a href='pupilprofile.php?id=".$pupils['studentID']."'>");
+                echo(behavioursToday($pupils['studentID']));
+                echo("</a>");
+                echo("</td>");
+            echo("</tr>");
+            }
+            echo("<table>");
     }
 ?>
 <br><br>

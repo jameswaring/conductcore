@@ -319,6 +319,24 @@ function mostLoggedPupil(){
     return $mstcmn;
 }
 
+function behavioursToday($id){
+    include_once 'includes/db_connection.php';
+    $dbconn = OpenCon();
+    $dbconn->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
+    $sqlstmnt2 = 'select count(*) as beh from incidents where date = CURDATE() and studentID = :studentID';
+    $stmtUsr2 = $dbconn -> prepare($sqlstmnt2);
+    $intid = intval($id);
+    $stmtUsr2 -> bindValue(':studentID', $intid);
+    $stmtUsr2 -> execute();
+    $rows = $stmtUsr2->fetchColumn();
+    //list found pupils
+    if(is_null($rows))
+            {
+                //list found pupils
+                return 0;
+            }
+    return $rows;
+}
 
 //working sql for current year
 // select * from incidents where `date` >= concat(year(current_date), '-09-01')
