@@ -37,32 +37,30 @@
         echo "You are not responsible for any pupils";
     }
     else{
-        echo("<table class = 'blueTable'>");
-            echo("<tr>");
-                echo("<th>First Name</th>");
-                echo("<th>Surname</th>");
-                echo("<th>Today's Behaviour Points</th>");
-            echo("</tr>");
-        foreach($found as $pupils){
-            echo("<tr>");
-                echo("<td>");
-                echo("<a href='pupilprofile.php?id=".$pupils['studentID']."'>");
-                echo($pupils['firstName']);
-                echo("</a>");
-                echo("</td>");
-                echo("<td>");
-                echo("<a href='pupilprofile.php?id=".$pupils['studentID']."'>");
-                echo($pupils['surname']);
-                echo("</a>");
-                echo("</td>");
-                echo("<td>");
-                echo("<a href='pupilprofile.php?id=".$pupils['studentID']."'>");
-                echo(behavioursToday($pupils['studentID']));
-                echo("</a>");
-                echo("</td>");
-            echo("</tr>");
-            }
-            echo("<table>");
+        echo("<form action='registrationsubmit.php' method='post'>");
+            echo("<table class = 'blueTable'>");
+                echo("<tr>");
+                    echo("<th>First Name</th>");
+                    echo("<th>Surname</th>");
+                    echo("<th>Present?</th>");
+                echo("</tr>");
+            foreach($found as $pupils){
+                echo("<tr>");
+                    echo("<td>");
+                    echo($pupils['firstName']);
+                    echo("</td>");
+                    echo("<td>");
+                    echo($pupils['surname']);
+                    echo("</td>");
+                    echo("<td>");
+                    echo("<input type='checkbox' name='check[]' value='".$pupils['studentID']."'");
+                    echo("</td>");
+                echo("</tr>");
+                }
+                echo("<table>");
+                echo("<br>");
+            echo("<input type='submit'>");
+        echo("</form>");
     }
 ?>
 <br><br>
