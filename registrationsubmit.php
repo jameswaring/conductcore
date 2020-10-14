@@ -11,12 +11,12 @@ else{
         $dbconn = OpenCon();
         $dbconn->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         foreach ($_POST['check'] as $id => $value) {
-            echo($id);
+            $sqlstmnt2 = 'INSERT INTO attendance (`studentID`, `present`) VALUES (:studentID, True)';
+            $stmtUsr2 = $dbconn -> prepare($sqlstmnt2);
+            $stmtUsr2 -> bindValue(':studentID', $value);
+            $stmtUsr2 -> execute();
         }
-        $sqlstmnt2 = 'INSERT INTO attendance (`studentID`) VALUES (:studentID)';
-        $stmtUsr2 = $dbconn -> prepare($sqlstmnt2);
-        $stmtUsr2 -> bindValue(':studentID', $studentID);
-        $stmtUsr2 -> execute();
+        echo("hopefully done");
         // fetch pupil's ID for use in further queries
         //$sqlfetch = 'SELECT * FROM students WHERE studentID = (SELECT MAX(studentID) from students)';
         //$sqlfetchexec = $dbconn -> prepare($sqlfetch);

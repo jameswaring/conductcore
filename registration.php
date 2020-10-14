@@ -22,11 +22,10 @@
 <?php
     loadMenu();
 ?>
-<h1>Groups</h1>
-<p class="welcome-message">On this page you will see an overview of pupils in the core. You will
- only see pupils who you have been identified as having personal responsibility for.
- To find other pupils to add a behaviour record or intervention to, click 'find
-  pupils' in the menu. <br><br>The following are your pupils that are currently in the Core.
+<h1>Attendance Register</h1>
+<p class="welcome-message">Please take attendance before you go further. Promptly and frequently taken attendance will aid 
+    the application in producing meaningful data analysis.
+     <br><br>Check the boxes of the pupils who are present and click SUBMIT.
 </p>
 
 <?php
@@ -37,7 +36,7 @@
         echo "You are not responsible for any pupils";
     }
     else{
-        echo("<form action='registrationsubmit.php' method='post'>");
+        echo("<form class='registerform' action='registrationsubmit.php' method='post'>");
             echo("<table class = 'blueTable'>");
                 echo("<tr>");
                     echo("<th>First Name</th>");
@@ -57,7 +56,7 @@
                     echo("</td>");
                 echo("</tr>");
                 }
-                echo("<table>");
+                echo("</table>");
                 echo("<br>");
             echo("<input type='submit'>");
         echo("</form>");

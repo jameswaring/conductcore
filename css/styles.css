@@ -181,3 +181,10 @@ table.blueTable tfoot .links a{
 td a { 
   display: block; 
 }
+
+.registerform{
+  width: 50%;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+}
