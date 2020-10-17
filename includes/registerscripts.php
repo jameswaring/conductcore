@@ -6,8 +6,8 @@ function checkRegister(){
     $stmtUsr2 = $dbconn -> prepare($sqlstmnt2);
     $stmtUsr2 -> bindValue(':staffID', $_SESSION['loggedIn']['userID']);
     $stmtUsr2 -> execute();
-    $row = $stmtUsr2->fetch();
-    if(count($row)>1){
+    $row = $stmtUsr2->fetchAll(PDO::FETCH_ASSOC);
+    if(sizeof($row)>1){
         header("Location: home.php");
         die();
     }
