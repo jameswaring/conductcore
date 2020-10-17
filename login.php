@@ -1,6 +1,7 @@
 <?php
 session_start();
 include 'includes/db_connection.php';
+include 'includes/registerscripts.php';
 
 if(empty($_POST)){
     header("Location: index.php");
@@ -21,9 +22,16 @@ else{
             echo 'No user account exists. Please check your credentials'."<br>";
         }
         else{
+            $_SESSION['regComplete'] = 1;
             $_SESSION['loggedIn'] = $row;
-            header("Location: home.php");
-            die();
+            // now check whether form teacher for register to be checked
+            if($_SESSION['loggedIn']['job'] == 3){
+                checkRegister();
+            }
+            else{
+                header("Location: home.php");
+                die();
+                }
             }
         } 
     catch (PDOException $e) {

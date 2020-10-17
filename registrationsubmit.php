@@ -16,16 +16,11 @@ else{
             $stmtUsr2 -> bindValue(':studentID', $value);
             $stmtUsr2 -> execute();
         }
-        echo("hopefully done");
-        // fetch pupil's ID for use in further queries
-        //$sqlfetch = 'SELECT * FROM students WHERE studentID = (SELECT MAX(studentID) from students)';
-        //$sqlfetchexec = $dbconn -> prepare($sqlfetch);
-        //$sqlfetchexec -> execute();
-        //$row = $sqlfetchexec->fetch();
-        //$_SESSION['loggedStudent'] = $row;
-        // redirect to pupil's profile
-        //header("Location: pupilprofile.php?id=".$_SESSION['loggedStudent']["studentID"]);
-        //die();
+        // now add teacher's ID and date to completed registers
+        $sqlstmnt2 = 'INSERT INTO compreg (`staffID`, `date`) VALUES (:staffID, now())';
+        $stmtUsr2 = $dbconn -> prepare($sqlstmnt2);
+        $stmtUsr2 -> bindValue(':staffID', $_SESSION['loggedIn']['userID']);
+        $stmtUsr2 -> execute();
         } 
     catch (PDOException $e) {
         echo "DataBase Error: The user could not be added.<br>".$e->getMessage();
