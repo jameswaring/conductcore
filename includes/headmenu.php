@@ -1,13 +1,9 @@
-<div class="header">
-	<img class="logo" src="images/logo-placeholder.jpg" width="50" height="50">
-	<nav>
-		<ul class="navbar">
-			<li><a href="home.php" target="_self">Home</a></li>
-			<li><a href="registerpupil.php" target="_self">Register a pupil</a></li>
-			<li><a href="pupils.php" target="_self">Find a pupil</a></li>
-			<li><a href="groups.php" target="_self">My Groups</a></li>
-			<li><a href="schoolprofile.php" target="_self">Reports</a></li>
-		</ul>
-	</nav>
-	<a class="cta" href="/../index.php"><button>Logout</button></a>
-</div>
+<div class="page">
+  <nav class="page__menu menu">
+    <ul class="menu__list r-list">
+      <li class="menu__group"><a href="#0" class="menu__link r-link text-underlined">Option #1</a></li>
+      <li class="menu__group"><a href="#0" class="menu__link r-link text-underlined">Option #2</a></li>
+      <li class="menu__group"><a href="#0" class="menu__link r-link text-underlined">Option #3</a></li>
+    </ul>
+  </nav>
+  </div>
