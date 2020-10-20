@@ -20,16 +20,34 @@ align-items: center;
   flex-direction: row;
 }
 
+a{
+  text-decoration: none !important; 
+}
+
 .profileitem{
   flex: 0 0 40%;
-  border: 1px solid black;
+  border-radius: 25px;
+  border: 2px solid #73AD21;
   padding: 50px;
   margin-bottom: 30px;
+  text-decoration: none;
+}
+
+.profileitemnum{
+  font-family: 'Raleway', sans-serif;
+  font-size: 300%;
+  color: brown;
+  text-align: center;
+}
+
+.studentmostname{
+  font-size: 80%;
 }
 
 h1{
   justify-content: center;
   display: flex;
+  font-family: 'Raleway', sans-serif;
 }
 
 .wrap{
@@ -256,6 +274,7 @@ PRESENTATION STYLES
 .menu{
   background-color: var(--menuBackgroundColor, #f0f0f0);
   box-shadow: var(--menuBoxShadow, 0 1px 3px 0 rgba(0, 0, 0, .12), 0 1px 2px 0 rgba(0, 0, 0, .24));
+  margin-bottom: 5%;
 }
 
 .menu__list{
