@@ -33,11 +33,11 @@ To see more, click the appropriate section.
 
 <div class="profilewrapper">
     <div class="profileitem"><a href="pupilsincore.php"><div class = "profileitemnum"><?php echo(pupilsInCore())?></div>total number of pupils</div></a>
-    <div class="profileitem">Most Logged Pupil<div class = "profileitemnum"><div class="studentmostname"><?php echo($commonf." ".$commons);?></div></div></div>
+    <div class="profileitem">Most Logged Pupil<div class="studentmostname"><?php echo($commonf." ".$commons);?></div></div>
     <div class="profileitem"><a href="behaviourovertimewhole.php"><div class = "profileitemnum"><?php echo(negPointsWhole());?></div>Behaviour points this year</div></a>
     <div class="profileitem"><a href="interventionsovertimewhole.php"><div class = "profileitemnum"><?php echo(getInterventionNumWhole())?></div>Interventions this year</div></a>
-    <div class="profileitem"><a href="behaviourwhole.php"><?php echo(mostCommonIncWhole().'<br>'."most common behaviour");?></div></a>
-    <div class="profileitem"><a href="interventionwhole.php"><?php echo(mostCommonIntWhole().'<br>'."most common intervention");?></div></a>
+    <div class="profileitem"><a href="behaviourwhole.php"><div class = "studentmostname"><?php echo(mostCommonIncWhole());?></div>Most common behaviour</div></a>
+    <div class="profileitem"><a href="interventionwhole.php"><div class="studentmostname"><?php echo(mostCommonIntWhole());?></div>Most common intervention</div></a>
 </div>
 
 <p class="loggedin">You are logged in as <?php echo($_SESSION['loggedIn']['firstName']);?></p>

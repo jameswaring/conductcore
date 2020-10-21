@@ -38,7 +38,7 @@ remain in case you wish to reactive it at a later date. To permanently remove a 
     });
   } );
   </script>
-<form action="registersubmit.php" method="post" onsubmit="return validatePupilReg()">
+<form class="form-style-6" action="registersubmit.php" method="post" onsubmit="return validatePupilReg()">
     First Name: <input type="text" autocomplete="off" name="fnameInput"><div id="erfirstname"></div><br>
     Surname: <input type="text" autocomplete="off" name="snameInput"><div id="ersurname"></div><br>
     Sex:      <select id="sexInput" name="sexInput">
