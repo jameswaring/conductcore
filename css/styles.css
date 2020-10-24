@@ -20,6 +20,12 @@ align-items: center;
   flex-direction: row;
 }
 
+@media only screen and (max-width: 800px){
+  .profilewrapper{
+    flex-direction: column;
+  }
+}
+
 a{
   text-decoration: none !important; 
 }
@@ -67,6 +73,11 @@ h1{
 .welcome-message{
   align-self: flex-start;
   font-family: 'Source Sans Pro', sans-serif;
+}
+
+.subtitle{
+  font-family: 'Source Sans Pro', sans-serif;
+  justify-content: center;
 }
 
 .index-holder{
@@ -130,6 +141,7 @@ button{
     font-size: 9px;
     font-family: Georgia, 'Times New Roman', Times, serif;
     text-align: right;
+    margin-top: 50px;
 }
 
 .chartholder{
@@ -245,6 +257,7 @@ CORE STYLES
 
 .menu{
   --rLinkColor: var(--menuLinkColor, currentColor);
+  width: 100vw;
 }
 
 .menu__link{
@@ -277,11 +290,16 @@ PRESENTATION STYLES
 .menu{
   background-color: var(--menuBackgroundColor, #f0f0f0);
   box-shadow: var(--menuBoxShadow, 0 1px 3px 0 rgba(0, 0, 0, .12), 0 1px 2px 0 rgba(0, 0, 0, .24));
-  margin-bottom: 5%;
+  margin-bottom: 2%;
 }
 
 .menu__list{
   display: flex;  
+  justify-content: center;
+}
+
+.menu__group__logout{
+  position: right;
 }
 
 .menu__link{

@@ -23,7 +23,8 @@
     loadMenu();
 ?>
 <h1>The following pupils are currently in the core</h1>
-<p class="welcome-message">
+<p class="subtitle">Click one to view their profile</p>
+
     <?php
         include_once 'includes/db_connection.php';
         $dbconn = OpenCon();
@@ -32,15 +33,28 @@
         $stmtUsr2 -> execute();
         $rows = $stmtUsr2->fetchAll(PDO::FETCH_ASSOC);
 
-        foreach($rows as $found){
-                echo("<a href='pupilprofile.php?id=".$found['studentID']."'".">".$found['firstName'].'&nbsp;&nbsp;&nbsp;&nbsp;'.$found['surname'].'&nbsp;&nbsp;&nbsp;&nbsp;'.$found['dob']."</a><br>");
-            }
+        echo("<table class = 'blueTable'>");
+                echo("<tr>");
+                    echo("<th>First Name</th>");
+                    echo("<th>Surname</th>");
+                    echo("<th>In Core Since</th>");
+                echo("</tr>");
+            foreach($rows as $pupils){
+                echo("<tr>");
+                    echo("<td>");
+                    echo($pupils['firstName']);
+                    echo("</td>");
+                    echo("<td>");
+                    echo($pupils['surname']);
+                    echo("</td>");
+                    echo("<td>");
+                    echo(date('Y-n-j', strtotime($pupils['creationdate'])));
+                    echo("</td>");
+                echo("</tr>");
+                }
+                echo("</table>");
     ?>
-</p>
 <p class="loggedin">You are logged in as <?php echo($_SESSION['loggedIn']['firstName']);?></p>
 </div>
-<?php
-
-?>
 </body>
 </html>

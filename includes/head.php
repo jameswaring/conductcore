@@ -1,5 +1,5 @@
 <title>Track Behaviour, Effectively Intervene</title>
-<link rel="stylesheet" type="text/css" href="css/styles.scss?ver=<?php echo rand(111,999)?>">
+<link rel="stylesheet" type="text/css" href="css/styles.css?ver=<?php echo rand(111,999)?>">
 <script type="text/javascript" src="scripts/accountControl.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300&display=swap" rel="stylesheet">
