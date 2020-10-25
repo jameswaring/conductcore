@@ -14,18 +14,15 @@ foreach ($helper as $key){
     <script type="text/javascript" src="scripts/accountControl.js"></script>
 </head>
 <body>
-<h1 class="display-44">Welcome to Conduct Core</h1><br>
+<h1 id="indextitle">Conduct Core</h1><br>
 <div class="wrap">
-<div class="index-holder">
 <div class="login-form">
-<p>Please login with your supplied credentials below</p>
 <form action="login.php" method="post">
     Username: <input type="text" autocomplete="off" name="usernameInput"><div id="eruser"></div><br>
     Password: <input type="password" autocomplete="off" name="passwordInput"><div id="erpass"></div><br>
     School:      <input type="text" name="schoolInput" autocomplete="off"><div id="erschool"></div>
     <input type="submit" name="loginSubmit" value="login" onclick="if(validateLogin()) this.form.submit()">
 </form>
-</div>
 </div>
 </div>
 <!-- 
