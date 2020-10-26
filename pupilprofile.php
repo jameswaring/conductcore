@@ -45,12 +45,16 @@ To see more, click the appropriate section.
 To add a behaviour point for this pupil, click the button underneath the profile. 
 
 <div class="profilewrapper">
-    <div class="profileitem"><?php echo("Name: ".$_SESSION['loggedStudent']['firstName']." ".$_SESSION['loggedStudent']['surname'].'<br>'."Date of Birth: ".$_SESSION['loggedStudent']['dob'].'<br>'."Gender: ".$_SESSION['loggedStudent']['gender'].'<br>'."Year Group: ".$_SESSION['loggedStudent']['year'].'<br>'."Form: ".$_SESSION['loggedStudent']['formCode'].'<br>') ?></div>
-    <div class="profileitem">in core since<br><br><?php echo($_SESSION['loggedStudent']['creationdate']);?></div>
-    <div class="profileitem"><a href="behaviourovertime.php"><?php echo(negPoints($_SESSION['loggedStudent']['studentID']).'<br>'."total behaviour points");?></div></a>
-    <div class="profileitem"><a href="interventionsovertime.php"><?php echo(getInterventionNum($_SESSION['loggedStudent']['studentID']).'<br>'."total interventions");?></div></a>
-    <div class="profileitem"><a href="behaviour.php"><?php echo(mostCommonInc($_SESSION['loggedStudent']['studentID']).'<br>'."most common sanction");?></div></a>
-    <div class="profileitem"><a href="intervention.php"><?php echo(mostCommonInt($_SESSION['loggedStudent']['studentID']).'<br>'."most common intervention");?></div></a>
+    <div class="profileitem"><?php 
+    $dt = new DateTime($_SESSION['loggedStudent']['dob']);
+    $dt = $dt->format('Y-m-d');
+    echo("Name: ".$_SESSION['loggedStudent']['firstName']." ".$_SESSION['loggedStudent']['surname'].'<br>'."Date of Birth: ".$dt.'<br>'."Gender: ".$_SESSION['loggedStudent']['gender'].'<br>'."Year Group: ".$_SESSION['loggedStudent']['year'].'<br>'."Form: ".$_SESSION['loggedStudent']['formCode'].'<br>') 
+    ?></div>
+    <div class="profileitem"><div class = "studentmostname">In Core Since</div><br><br><?php echo($_SESSION['loggedStudent']['creationdate']);?></div>
+    <div class="profileitem"><a href="behaviourovertime.php"><div class = "profileitemnum"><?php echo(negPoints($_SESSION['loggedStudent']['studentID']).'</div>'.'<br>'."total behaviour points");?></div></a>
+    <div class="profileitem"><a href="interventionsovertime.php"><div class = "profileitemnum"><?php echo(getInterventionNum($_SESSION['loggedStudent']['studentID']).'<br>'.'</div>'."total interventions");?></div></a>
+    <div class="profileitem"><a href="behaviour.php"><div class = "studentmostname"><?php echo(mostCommonInc($_SESSION['loggedStudent']['studentID']).'<br>'.'</div>'."most common sanction");?></div></a>
+    <div class="profileitem"><a href="intervention.php"><div class = "studentmostname"><?php echo(mostCommonInt($_SESSION['loggedStudent']['studentID']).'<br>'.'</div>'."most common intervention");?></div></a>
 </div>
 
 <a href="addbehaviour.php" target="_self">Click to add a behaviour point</a>

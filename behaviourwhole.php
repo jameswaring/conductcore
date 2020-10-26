@@ -12,6 +12,7 @@
     <?php
         include 'includes/head.php';
         include 'includes/menuloader.php';
+        include 'includes/analysisscripts.php';
     ?>
 </head>
 <body>
@@ -59,14 +60,14 @@ new Chart(document.getElementById("pie-chart"), {
       labels: strLabels,
       datasets: [{
         label: "Incident Type",
-        backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850"],
+        backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850", "dfea3b", "eaaf3b", "808080"],
         data: strValues,
       }]
     },
     options: {
       title: {
         display: true,
-        text: 'Breakdown of incident types for <?php echo($_SESSION['loggedStudent']['firstName']);  ?>'
+        text: 'Breakdown of incident types for the whole school'
       }
     }
 });
