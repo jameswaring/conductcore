@@ -6,7 +6,32 @@ include 'includes/db_connection.php';
 if(empty($_POST)){
     header("Location: index.php");
 }
-else{
+else if(isset($_FILES['profpic'])){
+        $errors= array();
+        $file_name = $_FILES['profpic']['name'];
+        $file_size =$_FILES['profpic']['size'];
+        $file_tmp =$_FILES['profpic']['tmp_name'];
+        $file_type=$_FILES['profpic']['type'];
+        $file_ext=strtolower(end(explode('.',$_FILES['profpic']['name'])));
+        
+        $extensions= array("jpeg","jpg","png");
+        
+        if(in_array($file_ext,$extensions)=== false){
+           $errors[]="extension not allowed, please choose a JPEG or PNG file.";
+        }
+        
+        if($file_size > 2097152){
+           $errors[]='File size must be excately 2 MB';
+        }
+        
+        if(empty($errors)==true){
+           //move_uploaded_file($file_tmp,"images/profilepics".$file_name);
+           completeReg($file_tmp, $file_ext);
+        }else{
+           echo($errors);
+        }
+    }
+function completeReg($file_tmp, $file_ext){
     try {
         $dbconn = OpenCon();
         $dbconn->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -33,6 +58,8 @@ else{
         $sqlfetchexec -> execute();
         $row = $sqlfetchexec->fetch();
         $_SESSION['loggedStudent'] = $row;
+        //put profile pic in directory with studentID as file name
+        move_uploaded_file($file_tmp,"images/".$_SESSION['loggedStudent']['studentID'].".".$file_ext);
         // redirect to pupil's profile
         header("Location: pupilprofile.php?id=".$_SESSION['loggedStudent']["studentID"]);
         die();
@@ -43,5 +70,5 @@ else{
     catch (Exception $e) {
         echo "General Error: The user could not be added.<br>".$e->getMessage();
     }
-}
+}   
 ?>
