@@ -362,6 +362,19 @@ function getAllIncidentsWhole(){
     return($rows);
 }
 
+function getAllInterventions($id){
+    include_once 'includes/db_connection.php';
+    $dbconn = OpenCon();
+    $dbconn->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
+    $sqlstmnt2 = 'SELECT * FROM `interventions` WHERE `studentID` = :studentID';
+    $intid = intval($id);
+    $stmtUsr2 = $dbconn -> prepare($sqlstmnt2);
+    $stmtUsr2-> bindValue(':studentID', $intid);
+    $stmtUsr2 -> execute();
+    $rows = $stmtUsr2->fetchAll();
+    return($rows);
+}
+
 function getAllInterventionsWhole(){
     include_once 'includes/db_connection.php';
     $dbconn = OpenCon();
@@ -372,6 +385,7 @@ function getAllInterventionsWhole(){
     $rows = $stmtUsr2->fetchAll();
     return($rows);
 }
+
 
 //working sql for current year
 // select * from incidents where `date` >= concat(year(current_date), '-09-01')

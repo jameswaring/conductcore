@@ -1,6 +1,7 @@
 <?php
     session_start();
     ob_start();
+    include 'includes/analysisscripts.php';
     if(!isset($_SESSION['loggedIn'])){
         header("Location: index.php");
         die();
@@ -8,6 +9,11 @@
     else if(!isset($_SESSION['loggedStudent'])){
             header("Location: nostudent.php");
             die();
+    }
+    else if(negPoints($_SESSION['loggedStudent']['studentID'])==0){
+      // No interventions recorded
+      header("Location: nostudentinc.php");
+      die();
     }
 ?>
 <!DOCTYPE html>
@@ -18,7 +24,6 @@
         include 'includes/menuloader.php';
         include 'includes/findpupilbyid.php';
         include 'includes/responsibilitysearch.php';
-        include 'includes/analysisscripts.php';
     ?>
 </head>
 <body>
