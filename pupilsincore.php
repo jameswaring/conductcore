@@ -38,6 +38,7 @@
                     echo("<th>First Name</th>");
                     echo("<th>Surname</th>");
                     echo("<th>In Core Since</th>");
+                    echo("<th>Deactivate?</th>");
                 echo("</tr>");
             foreach($rows as $pupils){
                 echo("<tr>");
@@ -49,6 +50,9 @@
                     echo("</td>");
                     echo("<td>");
                     echo(date('Y-n-j', strtotime($pupils['creationdate'])));
+                    echo("</td>");
+                    echo("<td>");
+                    echo('<a href="includes/deactivatepupil.php?id='.$pupils['studentID'].'">remove</a>');
                     echo("</td>");
                 echo("</tr>");
                 }

@@ -26,49 +26,60 @@ else if(isset($_FILES['profpic'])){
         
         if(empty($errors)==true){
            //move_uploaded_file($file_tmp,"images/profilepics".$file_name);
-           completeReg($file_tmp, $file_ext);
+           completeRegCheck($file_tmp, $file_ext);
         }else{
            echo($errors);
         }
     }
-function completeReg($file_tmp, $file_ext){
-    try {
+function completeRegCheck($file_tmp, $file_ext){
         $dbconn = OpenCon();
         $dbconn->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $fname = $_POST['fnameInput'];
-        $sname = $_POST['snameInput'];
-        $sex = $_POST['sexInput'];
-        $dob = $_POST['dobInput'];
-        $form = $_POST['formInput'];
-        $year = intval($_POST['yearInput']);
-        $schoolID = $_SESSION['loggedIn']['school'];
-        $sqlstmnt2 = 'INSERT INTO students (`firstName`, `surname`, `dob`, `gender`, `year`,`formCode`, `schoolID`) VALUES (:firstName, :surname, :dob, :gender, :year, :form, :schoolID)';
+        $_SESSION['fnamet'] = $fname = $_POST['fnameInput'];
+        $_SESSION['snamet'] = $sname = $_POST['snameInput'];
+        $_SESSION['sext'] = $sex = $_POST['sexInput'];
+        $_SESSION['dobt'] = $dob = $_POST['dobInput'];
+        $_SESSION['formt'] = $form = $_POST['formInput'];
+        $_SESSION['yeart'] = $year = intval($_POST['yearInput']);
+        $_SESSION['schoolt'] = $schoolID = $_SESSION['loggedIn']['school'];
+        // check if pupil already exists but isn't active
+        $sqlstmnt2 = 'SELECT * FROM `students` WHERE `firstName` = :firstName AND `surname` = :surname AND schoolID = :schoolID';
         $stmtUsr2 = $dbconn -> prepare($sqlstmnt2);
         $stmtUsr2 -> bindValue(':firstName', $fname);
         $stmtUsr2 -> bindValue(':surname', $sname);
-        $stmtUsr2 -> bindValue(':dob', $dob);
-        $stmtUsr2 -> bindValue(':gender', $sex);
         $stmtUsr2 -> bindValue(':schoolID', $schoolID);
-        $stmtUsr2 -> bindValue(':form', $form);
-        $stmtUsr2 -> bindValue(':year', $year);
+        unset($_SESSION['foundpupils']);
         $stmtUsr2 -> execute();
-        // fetch pupil's ID for use in further queries
-        $sqlfetch = 'SELECT * FROM students WHERE studentID = (SELECT MAX(studentID) from students)';
-        $sqlfetchexec = $dbconn -> prepare($sqlfetch);
-        $sqlfetchexec -> execute();
-        $row = $sqlfetchexec->fetch();
-        $_SESSION['loggedStudent'] = $row;
-        //put profile pic in directory with studentID as file name
-        move_uploaded_file($file_tmp,"images/".$_SESSION['loggedStudent']['studentID'].".".$file_ext);
-        // redirect to pupil's profile
-        header("Location: pupilprofile.php?id=".$_SESSION['loggedStudent']["studentID"]);
-        die();
-        } 
-    catch (PDOException $e) {
-        echo "DataBase Error: The user could not be added.<br>".$e->getMessage();
-    } 
-    catch (Exception $e) {
-        echo "General Error: The user could not be added.<br>".$e->getMessage();
+        $_SESSION['foundpupils'] = $stmtUsr2 -> fetchAll();
+        if(is_null($_SESSION['foundpupils'])){
+            addPupil();
+        }
+        else{
+            header("Location: reactivatesearch.php");
+        }
     }
-}   
+
+function addPupil(){
+     // now add pupil
+     $sqlstmnt2 = 'INSERT INTO students (`firstName`, `surname`, `dob`, `gender`, `year`,`formCode`, `schoolID`) VALUES (:firstName, :surname, :dob, :gender, :year, :form, :schoolID)';
+     $stmtUsr2 = $dbconn -> prepare($sqlstmnt2);
+     $stmtUsr2 -> bindValue(':firstName', $_SESSION['fnamet']);
+     $stmtUsr2 -> bindValue(':surname', $_SESSION['snamet']);
+     $stmtUsr2 -> bindValue(':dob', $_SESSION['dobt']);
+     $stmtUsr2 -> bindValue(':gender', $_SESSION['sext']);
+     $stmtUsr2 -> bindValue(':schoolID', $_SESSION['schoolt']);
+     $stmtUsr2 -> bindValue(':form', $_SESSION['formt']);
+     $stmtUsr2 -> bindValue(':year', $_SESSION['yeart']);
+     $stmtUsr2 -> execute();
+     // fetch pupil's ID for use in further queries
+     $sqlfetch = 'SELECT * FROM students WHERE studentID = (SELECT MAX(studentID) from students)';
+     $sqlfetchexec = $dbconn -> prepare($sqlfetch);
+     $sqlfetchexec -> execute();
+     $row = $sqlfetchexec->fetch();
+     $_SESSION['loggedStudent'] = $row;
+     //put profile pic in directory with studentID as file name
+     move_uploaded_file($file_tmp,"images/".$_SESSION['loggedStudent']['studentID'].".".$file_ext);
+     // redirect to pupil's profile
+     header("Location: pupilprofile.php?id=".$_SESSION['loggedStudent']["studentID"]);
+     die();
+} 
 ?>
