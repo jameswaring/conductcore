@@ -24,6 +24,7 @@
     $commonArray = mostLoggedPupil();
     $commonf = $commonArray[0]['firstName'];
     $commons = $commonArray[0]['surname'];
+    $commonid = $commonArray[0]['studentID'];
 ?>
 <h1>School Profile</h1>
 <p class="welcome-message">
@@ -33,7 +34,7 @@ To see more, click the appropriate section.
 
 <div class="profilewrapper">
     <div class="profileitem"><a href="pupilsincore.php"><div class = "profileitemnum"><?php echo(pupilsInCore())?></div>total number of pupils</div></a>
-    <div class="profileitem">Most Logged Pupil<div class="studentmostname"><?php echo($commonf." ".$commons);?></div></div>
+    <div class="profileitem"><a href="pupilprofile.php?id=<?php echo($commonid); ?>">Most Logged Pupil<div class="studentmostname"><?php echo($commonf." ".$commons);?></div></div></a>
     <div class="profileitem"><a href="behaviourovertimewhole.php"><div class = "profileitemnum"><?php echo(negPointsWhole());?></div>Behaviour points this year</div></a>
     <div class="profileitem"><a href="interventionsovertimewhole.php"><div class = "profileitemnum"><?php echo(getInterventionNumWhole())?></div>Interventions this year</div></a>
     <div class="profileitem"><a href="behaviourwhole.php"><div class = "studentmostname"><?php echo(mostCommonIncWhole());?></div>Most common behaviour</div></a>

@@ -311,7 +311,7 @@ function mostLoggedPupil(){
     $rows = $stmtUsr2->fetchColumn();
     $common = $rows;
     $common = intval($common);
-    $sqlfind = 'SELECT `firstName`, `surname` FROM `students` WHERE `studentID` = :mostcommon';
+    $sqlfind = 'SELECT * FROM `students` WHERE `studentID` = :mostcommon';
     $stmtfind = $dbconn -> prepare($sqlfind);
     $stmtfind -> bindValue(':mostcommon', $common);
     $stmtfind -> execute();

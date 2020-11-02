@@ -23,7 +23,7 @@ if(isset($_GET['react'])){
     $dbconn = OpenCon();
     $dbconn->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
     $sqlstmnt2 = 'UPDATE `students` SET `active` = 1 WHERE `studentID` = :studentID';
-    $intid = intval($_GET['id']);
+    $intid = intval($_GET['react']);
     echo($_GET['react']);
     echo($intid);
     $stmtUsr2 = $dbconn -> prepare($sqlstmnt2);

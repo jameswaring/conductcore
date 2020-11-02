@@ -13,7 +13,7 @@ function findbyID($id){
             $stmtUsr2 -> bindValue(':studentID', $intid);
             $stmtUsr2 -> execute();
             $rows = $stmtUsr2->fetch();
-            if(sizeof($rows) > 0)
+            if(!is_null($rows))
             {
                 //list found pupils
                 return $rows;
