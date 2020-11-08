@@ -80,6 +80,15 @@ a{
   text-decoration: none;
 }
 
+.profileitemfinal{
+  flex: 0 0 100%;
+  border-radius: 25px;
+  border: 2px solid #73AD21;
+  padding: 50px;
+  margin-bottom: 30px;
+  text-decoration: none;
+}
+
 .profileitemnum{
   font-family: 'Raleway', sans-serif;
   font-size: 300%;
@@ -98,6 +107,13 @@ h1{
   justify-content: center;
   display: flex;
   font-family: 'Staatliches', cursive;
+}
+
+h2{
+  justify-content: center;
+  display: flex;
+  font-family: 'Staatliches', cursive;
+  font-size: 40%;
 }
 
 .wrap, html, body{

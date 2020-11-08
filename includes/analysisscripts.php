@@ -386,6 +386,38 @@ function getAllInterventionsWhole(){
     return($rows);
 }
 
+function mostEffectiveIntWhole(){
+    //connect to DB
+    include_once 'includes/db_connection.php';
+    $dbconn = OpenCon();
+    $dbconn->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
+    $sqlstmnt2 = 'SELECT * FROM `interventions`';
+    $stmtUsr2 = $dbconn -> prepare($sqlstmnt2);
+    $stmtUsr2 -> execute();
+    $rows = $stmtUsr2->fetchAll();
+    // Fetch all intervention data
+    for ($i = 1; $i < count($rows); $i++) {
+        echo $rows[$i]['type'];
+        echo $rows[$i]['date'];
+        $curdate = $rows[$i]['date'];
+        $prevdate = $rows[$i-1]['date'];
+        include_once 'includes/db_connection.php';
+        $dbconn = OpenCon();
+        $dbconn->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
+        $sqlstmnt2 = 'SELECT COUNT (*) as `num` from `incidents` where (`date` BETWEEN :fromdate AND :todate)';
+        $stmtUsr2 = $dbconn -> prepare($sqlstmnt2);
+        $stmtUsr2-> bindValue(':fromdate', $intid);
+        $stmtUsr2-> bindValue(':todate', $intid);
+        $stmtUsr2 -> execute();
+        $rows = $stmtUsr2->fetchAll();
+    }
+    // Store school holidays
+    //$ht1 = array("yyyy-10-29", "yyyy-11-06");
+    //$xmas = array("yyyy-12-21", "yyyy-01-dd");
+    //$ht2 = array("yyyy-mm-dd", "yyyy-mm-dd");
+    //$easter = array("yyyy-mm-dd", "yyyy-mm-dd");
+    //$summer = array("yyyy-mm-dd", "yyyy-mm-dd");
+}
 
 //working sql for current year
 // select * from incidents where `date` >= concat(year(current_date), '-09-01')
