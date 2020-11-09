@@ -391,26 +391,34 @@ function mostEffectiveIntWhole(){
     include_once 'includes/db_connection.php';
     $dbconn = OpenCon();
     $dbconn->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
-    $sqlstmnt2 = 'SELECT * FROM `interventions`';
+    $sqlstmnt2 = 'SELECT * FROM `interventions` ORDER BY `date`';
     $stmtUsr2 = $dbconn -> prepare($sqlstmnt2);
     $stmtUsr2 -> execute();
-    $rows = $stmtUsr2->fetchAll();
+    $intervRows = $stmtUsr2->fetchAll();
+    $behStack = array();
     // Fetch all intervention data
-    for ($i = 1; $i < count($rows); $i++) {
-        echo $rows[$i]['type'];
-        echo $rows[$i]['date'];
-        $curdate = $rows[$i]['date'];
-        $prevdate = $rows[$i-1]['date'];
+    for ($i = 1; $i < count($intervRows); $i++) {
+        $curdate = $intervRows[$i]['date'];
+        $prevdate = $intervRows[$i-1]['date'];
         include_once 'includes/db_connection.php';
         $dbconn = OpenCon();
         $dbconn->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
-        $sqlstmnt2 = 'SELECT COUNT (*) as `num` from `incidents` where (`date` BETWEEN :fromdate AND :todate)';
+        $sqlstmnt2 = 'SELECT COUNT(*) as `num` from `incidents` where (`date` BETWEEN :fromdate AND :todate)';
         $stmtUsr2 = $dbconn -> prepare($sqlstmnt2);
-        $stmtUsr2-> bindValue(':fromdate', $intid);
-        $stmtUsr2-> bindValue(':todate', $intid);
+        $stmtUsr2-> bindValue(':fromdate', $prevdate);
+        $stmtUsr2-> bindValue(':todate', $curdate);
         $stmtUsr2 -> execute();
-        $rows = $stmtUsr2->fetchAll();
+        $behRows = $stmtUsr2->fetchColumn();
+        array_push($behStack, $behRows);
+        unset($behRows);
     }
+    // output all interventions and incident nums for testing
+    for ($i = 0; $i < count($intervRows); $i++) {
+            echo($intervRows[$i]['type']."   ");
+            echo($behStack[$i]);
+            echo("<br>");
+        }
+    // now get rid od repeating types and find averages for them
     // Store school holidays
     //$ht1 = array("yyyy-10-29", "yyyy-11-06");
     //$xmas = array("yyyy-12-21", "yyyy-01-dd");
