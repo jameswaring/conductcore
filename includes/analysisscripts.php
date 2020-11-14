@@ -419,6 +419,8 @@ function mostEffectiveIntWhole(){
             echo("<br>");
         }
     // now get rid od repeating types and find averages for them
+    
+    // loop through each student with the above algorithm and average out all
     // Store school holidays
     //$ht1 = array("yyyy-10-29", "yyyy-11-06");
     //$xmas = array("yyyy-12-21", "yyyy-01-dd");

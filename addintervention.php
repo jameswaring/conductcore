@@ -30,7 +30,7 @@
       format: 'yyyy-mm-dd',
       autoclose: true,
       todayHighlight: true,
-      maxDate: new Date()
+      endDate: new Date
     });
   } );
 </script>
