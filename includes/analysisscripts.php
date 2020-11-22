@@ -391,44 +391,71 @@ function mostEffectiveIntWhole(){
     include_once 'includes/db_connection.php';
     $dbconn = OpenCon();
     $dbconn->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
-    $sqlstmnt2 = 'SELECT * FROM `interventions` ORDER BY `date`';
+    // fetch array of all student studentIDs (only students who have interventions to aid efficiency)
+    $sqlstmnt2 = 'SELECT DISTINCT `studentID` FROM `interventions`';
     $stmtUsr2 = $dbconn -> prepare($sqlstmnt2);
     $stmtUsr2 -> execute();
-    $intervRows = $stmtUsr2->fetchAll();
+    $students = $stmtUsr2->fetchAll();
     $behStack = array();
-    // Fetch all intervention data
-    for ($i = 1; $i < count($intervRows); $i++) {
-        $curdate = $intervRows[$i]['date'];
-        $prevdate = $intervRows[$i-1]['date'];
-        include_once 'includes/db_connection.php';
-        $dbconn = OpenCon();
-        $dbconn->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
-        $sqlstmnt2 = 'SELECT COUNT(*) as `num` from `incidents` where (`date` BETWEEN :fromdate AND :todate)';
-        $stmtUsr2 = $dbconn -> prepare($sqlstmnt2);
-        $stmtUsr2-> bindValue(':fromdate', $prevdate);
-        $stmtUsr2-> bindValue(':todate', $curdate);
-        $stmtUsr2 -> execute();
-        $behRows = $stmtUsr2->fetchColumn();
-        array_push($behStack, $behRows);
-        unset($behRows);
-    }
-    // output all interventions and incident nums for testing
-    for ($i = 0; $i < count($intervRows); $i++) {
-            echo($intervRows[$i]['type']."   ");
-            echo($behStack[$i]);
-            echo("<br>");
-        }
-    // now get rid od repeating types and find averages for them
-    
-    // loop through each student with the above algorithm and average out all
-    // Store school holidays
-    //$ht1 = array("yyyy-10-29", "yyyy-11-06");
-    //$xmas = array("yyyy-12-21", "yyyy-01-dd");
-    //$ht2 = array("yyyy-mm-dd", "yyyy-mm-dd");
-    //$easter = array("yyyy-mm-dd", "yyyy-mm-dd");
-    //$summer = array("yyyy-mm-dd", "yyyy-mm-dd");
-}
+    $intervStack = array();
+    // if less than 10 whole school interventions then redirect to message
 
-//working sql for current year
-// select * from incidents where `date` >= concat(year(current_date), '-09-01')
+    // select all interventions for student
+    foreach($students as $student){
+        $sqlstmnt2 = 'SELECT * FROM `interventions` WHERE `studentID` = :studentID ORDER BY `date`';
+        $stmtUsr2 = $dbconn -> prepare($sqlstmnt2);
+        $stmtUsr2-> bindValue(':studentID', $student['studentID']);
+        $stmtUsr2 -> execute();
+        $intervRows = $stmtUsr2->fetchAll();
+        // only include students with more than 1 intervention
+        if(count($intervRows)>1){
+            for ($i = 1; $i < count($intervRows); $i++) {
+                array_push($intervStack, $intervRows[$i]['type']);
+                $curdate = $intervRows[$i]['date'];
+                $prevdate = $intervRows[$i-1]['date'];
+                include_once 'includes/db_connection.php';
+                $sqlstmnt2 = 'SELECT COUNT(*) as `num` from `incidents` where (`date` BETWEEN :fromdate AND :todate) and `studentID` = :studentID';
+                $stmtUsr2 = $dbconn -> prepare($sqlstmnt2);
+                $stmtUsr2-> bindValue(':fromdate', $prevdate);
+                $stmtUsr2-> bindValue(':todate', $curdate);
+                $stmtUsr2-> bindValue(':studentID', $student['studentID']);
+                $stmtUsr2 -> execute();
+                $behRows = $stmtUsr2->fetchColumn();
+                array_push($behStack, $behRows);
+                unset($behRows);
+            }
+        }
+    }
+    // list all interventions used for testing
+    // output all interventions and incident nums for testing
+    for ($i = 0; $i < count($intervStack); $i++) {
+        echo($intervStack[$i]."   ");
+        echo($behStack[$i]);
+        echo("<br>");
+    }
+    
+    // now get rid of repeating types and find averages for them
+    $finalIntervNames = array();
+    $finalTotals = array();
+    for ($i = 0; $i < count($intervStack); $i++) {
+        if(in_array($intervStack[$i], $finalIntervNames)){
+            $k = array_search($intervStack[$i], $finalIntervNames);
+            $prevTotal = $finalTotals[$k];
+            $averageTotal = ceil(($prevTotal+$behStack[$i])/2);
+            unset($behStack[$i]);
+            $finalTotals[$k] = $averageTotal;
+            $intervStack[$i] = "blanked";
+        }
+        else{
+            array_push($finalIntervNames, $intervStack[$i]);
+            array_push($finalTotals, $behStack[$i]);
+        }
+    }
+    echo('final totals<br>');
+    for ($i = 0; $i < count($finalIntervNames); $i++) {
+        echo($finalIntervNames[$i]."   ");
+        echo($finalTotals[$i]);
+        echo("<br>");
+    }
+}
 ?>
