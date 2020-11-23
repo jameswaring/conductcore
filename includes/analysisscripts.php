@@ -391,6 +391,15 @@ function mostEffectiveIntWhole(){
     include_once 'includes/db_connection.php';
     $dbconn = OpenCon();
     $dbconn->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
+    // redirect if less than 10 interventions
+    $sqlchk = 'SELECT * FROM `interventions`';
+    $stmtchk = $dbconn -> prepare($sqlchk);
+    $stmtchk -> execute();
+    $totalints = $stmtchk->fetchAll();
+    if(count($totalints)<10){
+        //redirect to a not enough interventions page
+        return(0);
+    }
     // fetch array of all student studentIDs (only students who have interventions to aid efficiency)
     $sqlstmnt2 = 'SELECT DISTINCT `studentID` FROM `interventions`';
     $stmtUsr2 = $dbconn -> prepare($sqlstmnt2);
@@ -426,14 +435,6 @@ function mostEffectiveIntWhole(){
             }
         }
     }
-    // list all interventions used for testing
-    // output all interventions and incident nums for testing
-    for ($i = 0; $i < count($intervStack); $i++) {
-        echo($intervStack[$i]."   ");
-        echo($behStack[$i]);
-        echo("<br>");
-    }
-    
     // now get rid of repeating types and find averages for them
     $finalIntervNames = array();
     $finalTotals = array();
@@ -451,11 +452,22 @@ function mostEffectiveIntWhole(){
             array_push($finalTotals, $behStack[$i]);
         }
     }
-    echo('final totals<br>');
-    for ($i = 0; $i < count($finalIntervNames); $i++) {
-        echo($finalIntervNames[$i]."   ");
-        echo($finalTotals[$i]);
-        echo("<br>");
+    // total outputter for testing purposes
+    //echo('final totals<br>');
+    //for ($i = 0; $i < count($finalIntervNames); $i++) {
+     //   echo($finalIntervNames[$i]."   ");
+      //  echo($finalTotals[$i]);
+       // echo("<br>");
+    $maxs = array_keys($finalTotals, max($finalTotals));
+    $result = array();
+    foreach($maxs as $max){
+        array_push($result, $finalIntervNames[$max]);
     }
+    return $result;
+
+}
+
+function getTriedInts(){
+    
 }
 ?>
