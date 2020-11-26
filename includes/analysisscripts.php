@@ -387,6 +387,8 @@ function getAllInterventionsWhole(){
 }
 
 function mostEffectiveIntWhole(){
+    // test timer
+    $time = microtime(TRUE);
     //connect to DB
     include_once 'includes/db_connection.php';
     $dbconn = OpenCon();
@@ -463,6 +465,7 @@ function mostEffectiveIntWhole(){
     foreach($maxs as $max){
         array_push($result, $finalIntervNames[$max]);
     }
+    echo ((microtime(TRUE)-$time). ' seconds');
     return $result;
 
 }

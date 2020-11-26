@@ -47,7 +47,7 @@
         <option value="Homophobia">Homophobia</option>
         <option value="Hate Speech">Hatespeech</option>
       </select><br><div id="ertype"></div>
-    Incident Description: <textarea name="descInput" id="descInput" autocomplete="off" rows="6" cols="50"></textarea><div id="erdesc"></div>
+    Incident Description: <textarea name="descInput" id="descInput" autocomplete="off" rows="6" cols="50" maxlength="500"></textarea>
     Incident Date: <input type="text" id="incDate" name="incDate"><div id="erdate"></div>
     <input type="submit">
 </form>

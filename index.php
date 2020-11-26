@@ -21,7 +21,7 @@ foreach ($helper as $key){
     Username: <input type="text" autocomplete="off" name="usernameInput"><div id="eruser"></div><br>
     Password: <input type="password" autocomplete="off" name="passwordInput"><div id="erpass"></div><br>
     School:      <input type="text" name="schoolInput" autocomplete="off"><div id="erschool"></div>
-    <input type="submit" name="loginSubmit" value="login" onclick="if(validateLogin()) this.form.submit()">
+    <input type="submit" name="loginSubmit" value="login" onclick="return validateLogin()">
 </form>
 </div>
 </div>

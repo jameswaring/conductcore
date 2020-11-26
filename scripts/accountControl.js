@@ -1,21 +1,10 @@
 function validateLogin() {
-    var school = document.getElementsByName("schoolInput")[0].value
-    var username = document.getElementsByName("usernameInput")[0].value
-    var password = document.getElementsByName("passwordInput")[0].value
-    var failed = false;
-    if(!school){
-        document.getElementById("erschool").innerHTML = "No school entered";
-        failed = true;
+    var passed = true;
+    if((document.getElementsByName("schoolInput")[0].value == "") || (document.getElementsByName("usernameInput")[0].value == "") || (document.getElementsByName("passwordInput")[0].value == "") ){
+        document.getElementById("erschool").innerHTML = "Complete all fields";
+        passed = false;
     }
-    if(!username){
-        document.getElementById("eruser").innerHTML = "No username entered";
-        failed = true;
-    }
-    if(!password){
-        document.getElementById("erpass").innerHTML = "No password entered";
-        failed = true;
-    }
-    return !failed;
+    return passed;
 }
 
 function validatePupilSearch() {
@@ -73,41 +62,19 @@ function validatePupilReg() {
 }
 
 function validateIntervention() {
-    var intType = document.getElementsByName("intType")[0].value
-    var desc = document.getElementsByName("descInput")[0].value
-    var intDate = document.getElementsByName("passwordInput")[0].value
-    var failed = false;
-    if(!school){
-        document.getElementById("ertype").innerHTML = "No type entered";
-        failed = true;
+    var passed = true;
+    if((document.getElementsByName("descInput")[0].value == "") || (document.getElementsByName("incDate")[0].value == "")){
+        document.getElementById("erdate").innerHTML = "Complete all fields";
+        passed = false;
     }
-    if(!desc){
-        document.getElementById("erdesc").innerHTML = "No description entered";
-        failed = true;
-    }
-    if(!intDate){
-        document.getElementById("erdate").innerHTML = "No date entered";
-        failed = true;
-    }
-    return !failed;
+    return passed;
 }
 
 function validateBehaviour() {
-    var incType = document.getElementsByName("incType")[0].value
-    var descInput = document.getElementsByName("descInput")[0].value
-    var incDate = document.getElementsByName("incDate")[0].value
-    var failed = false;
-    if(!incType){
-        document.getElementById("ertype").innerHTML = "No type entered";
-        failed = true;
+    var passed = true;
+    if((document.getElementsByName("descInput")[0].value == "") || (document.getElementsByName("intDate")[0].value == "")){
+        document.getElementById("erdate").innerHTML = "Complete all fields";
+        passed = false;
     }
-    if(!incDate){
-        document.getElementById("erdate").innerHTML = "No date entered";
-        failed = true;
-    }
-    if(!descInput){
-        document.getElementById("erdesc").innerHTML = "No description entered";
-        failed = true;
-    }
-    return !failed;
+    return passed;
 }

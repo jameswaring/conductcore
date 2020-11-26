@@ -44,7 +44,7 @@
         <option value="Internal Exclusion">Internal Isolation</option>
         <option value="External Exclusion">External Exclusion</option>
       </select><br><div id="ertype"></div>
-    Intervention Description: <textarea name="descInput" autocomplete="off" rows="6" cols="50"></textarea><div id="erdesc"></div>
+    Intervention Description: <textarea name="descInput" autocomplete="off" rows="6" cols="50" maxlength="500"></textarea><div id="erdesc"></div>
     Intervention Date: <input type="text" id="intDate" name="intDate"><div id="erdate"></div>
     <input type="submit" name="loginSubmit" value="submit" onclick="if(validateIntervention()) this.form.submit()">
 </form>

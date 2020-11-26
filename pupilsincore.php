@@ -43,10 +43,14 @@
             foreach($rows as $pupils){
                 echo("<tr>");
                     echo("<td>");
+                    echo("<a href='pupilprofile.php?id=".$pupils['studentID']."'>");
                     echo($pupils['firstName']);
+                    echo("</a>");
                     echo("</td>");
                     echo("<td>");
+                    echo("<a href='pupilprofile.php?id=".$pupils['studentID']."'>");
                     echo($pupils['surname']);
+                    echo("</a>");
                     echo("</td>");
                     echo("<td>");
                     echo(date('Y-n-j', strtotime($pupils['creationdate'])));

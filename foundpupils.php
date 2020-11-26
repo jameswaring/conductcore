@@ -46,7 +46,7 @@
                     echo("</td>");
                     echo("<td>");
                     echo("<a href='pupilprofile.php?id=".$found['studentID']."'>");
-                    echo($found['dob']);
+                    echo(date('Y-n-j', strtotime($found['dob'])));
                     echo("</a>");
                     echo("</td>");
                 echo("</tr>");
