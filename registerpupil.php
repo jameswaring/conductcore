@@ -34,7 +34,7 @@ remain in case you wish to reactive it at a later date. To permanently remove a 
       format: 'yyyy-mm-dd',
       autoclose: true,
       todayHighlight: true,
-      maxDate: new Date()
+      endDate: new Date
     });
   } );
   </script>

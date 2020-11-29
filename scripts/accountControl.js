@@ -63,7 +63,7 @@ function validatePupilReg() {
 
 function validateIntervention() {
     var passed = true;
-    if((document.getElementsByName("descInput")[0].value == "") || (document.getElementsByName("incDate")[0].value == "")){
+    if((document.getElementsByName("descInput")[0].value === "") || (document.getElementsByName("incDate")[0].value === "")){
         document.getElementById("erdate").innerHTML = "Complete all fields";
         passed = false;
     }
@@ -72,7 +72,7 @@ function validateIntervention() {
 
 function validateBehaviour() {
     var passed = true;
-    if((document.getElementsByName("descInput")[0].value == "") || (document.getElementsByName("intDate")[0].value == "")){
+    if((document.getElementsByName("descInput")[0].value === "") || (document.getElementsByName("intDate")[0].value === "")){
         document.getElementById("erdate").innerHTML = "Complete all fields";
         passed = false;
     }

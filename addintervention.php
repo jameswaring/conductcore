@@ -30,12 +30,15 @@
       format: 'yyyy-mm-dd',
       autoclose: true,
       todayHighlight: true,
-      endDate: new Date
+      endDate: new Date,
+      
     });
   } );
+
+  const textarea = document.querySelector("textarea");
 </script>
 <form action="interventionsubmit.php" method="post">
-    Intervention Type: <select id="intType" name="intType">
+    Intervention Type: <select id="intType" name="intType" required>
         <option value="Internal Detention">In-school Detention</option>
         <option value="After School Detention">After-school Detention</option>
         <option value="Phone Call Home">Phone Call Home</option>
@@ -43,12 +46,26 @@
         <option value="School Report">School Report</option>
         <option value="Internal Exclusion">Internal Isolation</option>
         <option value="External Exclusion">External Exclusion</option>
-      </select><br><div id="ertype"></div>
-    Intervention Description: <textarea name="descInput" autocomplete="off" rows="6" cols="50" maxlength="500"></textarea><div id="erdesc"></div>
-    Intervention Date: <input type="text" id="intDate" name="intDate"><div id="erdate"></div>
-    <input type="submit" name="loginSubmit" value="submit" onclick="if(validateIntervention()) this.form.submit()">
+      </select><br><br>
+    Intervention Description: <textarea name="descInput" id="descInput" autocomplete="off" rows="6" cols="50" maxlength="500" required></textarea><div id="erdesc"></div>
+    <div id="remaining">Remaining: 500</div><br>
+    Intervention Date: <input type="text" id="intDate" name="intDate" required><div id="erdate"></div>
+    
+    <input type="submit" name="loginSubmit" value="submit">
 </form>
 <p class="loggedin">You are logged in as <?php echo($_SESSION['loggedIn']['firstName']);?></p>
 </div>
+<script>
+    a = document.querySelector("#descInput");
+    a.addEventListener("input", event => {
+    const target = event.currentTarget;
+    const maxLength = 500;
+    const currentLength = target.value.length;
+    if (currentLength >= maxLength) {
+        return console.log("You have reached the maximum number of characters.");
+    };
+    document.getElementById("remaining").innerHTML = "Remaining: " + (maxLength-currentLength);
+    });
+</script>
 </body>
 </html>

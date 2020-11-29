@@ -387,8 +387,6 @@ function getAllInterventionsWhole(){
 }
 
 function mostEffectiveIntWhole(){
-    // test timer
-    $time = microtime(TRUE);
     //connect to DB
     include_once 'includes/db_connection.php';
     $dbconn = OpenCon();
@@ -465,12 +463,17 @@ function mostEffectiveIntWhole(){
     foreach($maxs as $max){
         array_push($result, $finalIntervNames[$max]);
     }
-    echo ((microtime(TRUE)-$time). ' seconds');
     return $result;
 
 }
 
-function getTriedInts(){
-    
+function getTriedIntsWhole(){
+    $dbconn = OpenCon();
+    $dbconn->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
+    $sqlstmnt2 = 'SELECT DISTINCT `type` FROM `interventions`';
+    $stmtUsr2 = $dbconn -> prepare($sqlstmnt2);
+    $stmtUsr2 -> execute();
+    $intervRows = $stmtUsr2->fetchAll();
+    return $intervRows;
 }
 ?>

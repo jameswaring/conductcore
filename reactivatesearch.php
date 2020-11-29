@@ -1,8 +1,13 @@
 <?php
+    include 'registersubmit.php';
     session_start();
     ob_start();
     if(!isset($_SESSION['loggedIn'])){
         header("Location: index.php");
+        die();
+    }
+    if(isset($_GET['confirm'])){
+        addpupil();
         die();
     }
 ?>
@@ -55,6 +60,7 @@
                 echo("<table>");
         }
     ?>
+    <br><br><p class="welcome-message">Click <a href="reactivatesearch.php?confirm='yes'">HERE</a> to continue with the registration of the pupil</p>
 </p>
 <p class="loggedin">You are logged in as <?php echo($_SESSION['loggedIn']['firstName']);?></p>
 </div>

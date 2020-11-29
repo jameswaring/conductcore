@@ -21,23 +21,36 @@
     loadMenu();
 ?>
 <h1>Most Effective Intervention</h1>
-<p class="welcome-message">The most effective intervention for this (pupil/school) was judged to be
-</p>
-<?php $result = mostEffectiveIntWhole();
+
+<?php 
+    $result = mostEffectiveIntWhole();
     if($result == 0){
         echo('Not enough interventions for this analysis');
     }
     else{
         foreach($result as $res){
+            echo('<p class="welcome-message">The most effective intervention/s for this school was judged to be</p>');
             echo($res.'<br>');
+            $availints = array("Internal Detention", "After School Detention", "Phone Call Home", "Parental Meeting", "School Report",  "Internal Exclusion", "External Exclusion");
+            $tried = getTriedIntsWhole();
+            $triedArray = array();
+            if(sizeof($tried)<sizeof($availints)){
+                echo('<p class="welcome-message">However, the following interventions have yet to be tried</p>');
+                foreach($tried as $try){
+                    if(!in_array($try, $availints)){
+                        array_push($triedArray, $try['type']);
+                    }
+                }
+                echo('<p>');
+                $diffs = array_diff($availints, $triedArray);
+                foreach($diffs as $diff){
+                    echo($diff.'<p>');
+                }
+                
+            }
         }
     }
-
-    $tried = getTriedInts();
 ?>
-<p class="welcome-message">
-    Get started by using the menu at the top to find a pupil, or view the behaviour report of your own groups.
-</p>
 <p class="loggedin">You are logged in as <?php echo($_SESSION['loggedIn']['firstName']);?></p>
 </div>
 </body>

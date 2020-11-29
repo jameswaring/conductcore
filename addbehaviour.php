@@ -34,7 +34,7 @@
     });
   } );
 </script>
-<form action="behavioursubmit.php" method="post" onsubmit="return validateBehaviour()">
+<form action="behavioursubmit.php" method="post">
     Incident Type: <select id="incType" name="incType">
         <option value="Classwork">Classwork</option>
         <option value="Homework">Homework</option>
@@ -48,8 +48,8 @@
         <option value="Hate Speech">Hatespeech</option>
       </select><br><div id="ertype"></div>
     Incident Description: <textarea name="descInput" id="descInput" autocomplete="off" rows="6" cols="50" maxlength="500"></textarea>
-    Incident Date: <input type="text" id="incDate" name="incDate"><div id="erdate"></div>
-    <input type="submit">
+    Incident Date: <input type="text" id="incDate" name="incDate" required><div id="erdate"></div>
+    <input type="submit" onclick="return validateBehaviour()">
 </form>
 <p class="loggedin">You are logged in as <?php echo($_SESSION['loggedIn']['firstName']);?></p>
 </div>

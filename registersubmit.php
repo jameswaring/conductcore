@@ -4,9 +4,10 @@ ob_start();
 include 'includes/db_connection.php';
 
 if(empty($_POST)){
-    header("Location: index.php");
+    //header("Location: index.php");
 }
 else if(isset($_FILES['profpic'])){
+        $_SESSION['profpic'] = $_FILES['profpic'];
         $errors= array();
         $file_name = $_FILES['profpic']['name'];
         $file_size =$_FILES['profpic']['size'];
@@ -21,45 +22,46 @@ else if(isset($_FILES['profpic'])){
         }
         
         if($file_size > 2097152){
-           $errors[]='File size must be excately 2 MB';
+           $errors[]='File size must be less than 2 MB';
         }
         
         if(empty($errors)==true){
            //move_uploaded_file($file_tmp,"images/profilepics".$file_name);
-           completeRegCheck($file_tmp, $file_ext);
+            unset($_SESSION['foundpupils']);
+            $dbconn = OpenCon();
+            $dbconn->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            $_SESSION['fnamet'] = $fname = $_POST['fnameInput'];
+            $_SESSION['snamet'] = $sname = $_POST['snameInput'];
+            $_SESSION['sext'] = $sex = $_POST['sexInput'];
+            $_SESSION['dobt'] = $dob = $_POST['dobInput'];
+            $_SESSION['formt'] = $form = $_POST['formInput'];
+            $_SESSION['yeart'] = $year = intval($_POST['yearInput']);
+            $_SESSION['schoolt'] = $schoolID = $_SESSION['loggedIn']['school'];
+            // check if pupil already exists but isn't active
+            $sqlstmnt2 = 'SELECT * FROM `students` WHERE `firstName` = :firstName AND `surname` = :surname AND schoolID = :schoolID';
+            $stmtUsr2 = $dbconn -> prepare($sqlstmnt2);
+            $stmtUsr2 -> bindValue(':firstName', $fname);
+            $stmtUsr2 -> bindValue(':surname', $sname);
+            $stmtUsr2 -> bindValue(':schoolID', $schoolID);
+            unset($_SESSION['foundpupils']);
+            $stmtUsr2 -> execute();
+            $result = $stmtUsr2 -> fetchAll();
+            $_SESSION['foundpupils'] = $result;
+            if(mysqli_num_rows($result)==0){
+                addPupil();
+            }
+            else{
+                header("Location: reactivatesearch.php");
+            }
         }else{
-           echo($errors);
-        }
-    }
-function completeRegCheck($file_tmp, $file_ext){
-        $dbconn = OpenCon();
-        $dbconn->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $_SESSION['fnamet'] = $fname = $_POST['fnameInput'];
-        $_SESSION['snamet'] = $sname = $_POST['snameInput'];
-        $_SESSION['sext'] = $sex = $_POST['sexInput'];
-        $_SESSION['dobt'] = $dob = $_POST['dobInput'];
-        $_SESSION['formt'] = $form = $_POST['formInput'];
-        $_SESSION['yeart'] = $year = intval($_POST['yearInput']);
-        $_SESSION['schoolt'] = $schoolID = $_SESSION['loggedIn']['school'];
-        // check if pupil already exists but isn't active
-        $sqlstmnt2 = 'SELECT * FROM `students` WHERE `firstName` = :firstName AND `surname` = :surname AND schoolID = :schoolID';
-        $stmtUsr2 = $dbconn -> prepare($sqlstmnt2);
-        $stmtUsr2 -> bindValue(':firstName', $fname);
-        $stmtUsr2 -> bindValue(':surname', $sname);
-        $stmtUsr2 -> bindValue(':schoolID', $schoolID);
-        unset($_SESSION['foundpupils']);
-        $stmtUsr2 -> execute();
-        $_SESSION['foundpupils'] = $stmtUsr2 -> fetchAll();
-        if(is_null($_SESSION['foundpupils'])){
-            addPupil();
-        }
-        else{
-            header("Location: reactivatesearch.php");
+           echo("There was a problem with the image you submitted");
         }
     }
 
 function addPupil(){
      // now add pupil
+     $dbconn = OpenCon();
+     $dbconn->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
      $sqlstmnt2 = 'INSERT INTO students (`firstName`, `surname`, `dob`, `gender`, `year`,`formCode`, `schoolID`) VALUES (:firstName, :surname, :dob, :gender, :year, :form, :schoolID)';
      $stmtUsr2 = $dbconn -> prepare($sqlstmnt2);
      $stmtUsr2 -> bindValue(':firstName', $_SESSION['fnamet']);
@@ -77,6 +79,8 @@ function addPupil(){
      $row = $sqlfetchexec->fetch();
      $_SESSION['loggedStudent'] = $row;
      //put profile pic in directory with studentID as file name
+     $file_tmp = $_SESSION['profpic']['tmp_name'];
+     $file_ext=strtolower(end(explode('.',$_SESSION['profpic']['name'])));
      move_uploaded_file($file_tmp,"images/".$_SESSION['loggedStudent']['studentID'].".".$file_ext);
      // redirect to pupil's profile
      header("Location: pupilprofile.php?id=".$_SESSION['loggedStudent']["studentID"]);
