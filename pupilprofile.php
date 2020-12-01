@@ -45,7 +45,7 @@ To see more, click the appropriate section.
 To add a behaviour point for this pupil, click the button underneath the profile. 
 
 <div class="profilewrapper">
-    <div class="profileitem"><?php echo('<img src="images/'.$_SESSION['loggedStudent']['studentID'].'"'.'alt="Profile Pic" width="70" height="100"');?>/></div>
+    <div class="profileitempic"><div class = "profileitemnum"><?php echo('<img src="images/'.$_SESSION['loggedStudent']['studentID'].'"'.'alt="Profile Pic" width="100" height="150"');?>/></div></div>
     <div class="profileitem"><?php 
     $dt = new DateTime($_SESSION['loggedStudent']['dob']);
     $dt = $dt->format('Y-m-d');
@@ -56,7 +56,18 @@ To add a behaviour point for this pupil, click the button underneath the profile
     <div class="profileitem"><a href="interventionsovertime.php"><div class = "profileitemnum"><?php echo(getInterventionNum($_SESSION['loggedStudent']['studentID']).'<br>'.'</div>'."total interventions");?></div></a>
     <div class="profileitem"><a href="behaviour.php"><div class = "studentmostname"><?php echo(mostCommonInc($_SESSION['loggedStudent']['studentID']).'<br>'.'</div>'."most common sanction");?></div></a>
     <div class="profileitem"><a href="intervention.php"><div class = "studentmostname"><?php echo(mostCommonInt($_SESSION['loggedStudent']['studentID']).'<br>'.'</div>'."most common intervention");?></div></a>
-    <div class="profileitem"><a href="intervention.php">Most Effective Intervention<div class = "studentmostname">Placeholder</div></a></div>
+    <div class="profileitem"><a href="mosteffectiveind.php"><div class="studentmostname"><?php
+        $result = mostEffectiveInt($_SESSION['loggedStudent']['studentID']);
+        if($result==0){
+            echo("Not enough data yet");
+        }
+        else{
+            foreach($result as $res){
+                echo($res.' / ');
+            }
+        }
+        
+    ?></div>Most effective intervention</div></a>
 </div>
 
 <a href="addbehaviour.php" target="_self">Click to add a behaviour point</a>

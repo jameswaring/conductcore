@@ -39,7 +39,18 @@ To see more, click the appropriate section.
     <div class="profileitem"><a href="interventionsovertimewhole.php"><div class = "profileitemnum"><?php echo(getInterventionNumWhole())?></div>Interventions this year</div></a>
     <div class="profileitem"><a href="behaviourwhole.php"><div class = "studentmostname"><?php echo(mostCommonIncWhole());?></div>Most common behaviour</div></a>
     <div class="profileitem"><a href="interventionwhole.php"><div class="studentmostname"><?php echo(mostCommonIntWhole());?></div>Most common intervention</div></a>
-    <div class="profileitemfinal"><a href="mosteffective.php"><div class="studentmostname"><?php echo(mostCommonIntWhole());?></div>Most effective intervention</div></a>
+    <div class="profileitemfinal"><a href="mosteffective.php"><div class="studentmostname"><?php
+        $result = mostEffectiveIntWhole();
+        if($result==0){
+            echo("Not enough data yet");
+        }
+        else{
+            foreach($result as $res){
+                echo($res.' / ');
+            }
+        }
+        
+    ?></div>Most effective intervention</div></a>
 </div>
 
 <p class="loggedin">You are logged in as <?php echo($_SESSION['loggedIn']['firstName']);?></p>

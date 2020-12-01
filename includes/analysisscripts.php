@@ -452,12 +452,6 @@ function mostEffectiveIntWhole(){
             array_push($finalTotals, $behStack[$i]);
         }
     }
-    // total outputter for testing purposes
-    //echo('final totals<br>');
-    //for ($i = 0; $i < count($finalIntervNames); $i++) {
-     //   echo($finalIntervNames[$i]."   ");
-      //  echo($finalTotals[$i]);
-       // echo("<br>");
     $maxs = array_keys($finalTotals, max($finalTotals));
     $result = array();
     foreach($maxs as $max){
@@ -467,11 +461,82 @@ function mostEffectiveIntWhole(){
 
 }
 
+function mostEffectiveInt($id){
+    //connect to DB
+    include_once 'includes/db_connection.php';
+    $dbconn = OpenCon();
+    $dbconn->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
+    $sqlstmnt2 = 'SELECT * FROM `interventions` WHERE `studentID` = :studentID ORDER BY `date`';
+    $stmtUsr2 = $dbconn -> prepare($sqlstmnt2);
+    $intid = intval($id);
+    $stmtUsr2-> bindValue(':studentID', $intid);
+    $stmtUsr2 -> execute();
+    $intervRows = $stmtUsr2->fetchAll();
+    $intervStack = array();
+    $behStack = array();
+    if(count($intervRows)<5){
+        //redirect to a not enough interventions page
+        return(0);
+    }
+    // only include students with more than 1 intervention
+    for ($i = 1; $i < count($intervRows); $i++) {
+        array_push($intervStack, $intervRows[$i]['type']);
+        $curdate = $intervRows[$i]['date'];
+        $prevdate = $intervRows[$i-1]['date'];
+        include_once 'includes/db_connection.php';
+        $sqlstmnt2 = 'SELECT COUNT(*) as `num` from `incidents` where (`date` BETWEEN :fromdate AND :todate) and `studentID` = :studentID';
+        $stmtUsr2 = $dbconn -> prepare($sqlstmnt2);
+        $stmtUsr2-> bindValue(':fromdate', $prevdate);
+        $stmtUsr2-> bindValue(':todate', $curdate);
+        $stmtUsr2-> bindValue(':studentID', $intid);
+        $stmtUsr2 -> execute();
+        $behRows = $stmtUsr2->fetchColumn();
+        array_push($behStack, $behRows);
+        unset($behRows);
+    }
+    // now get rid of repeating types and find averages for them
+    $finalIntervNames = array();
+    $finalTotals = array();
+    for ($i = 0; $i < count($intervStack); $i++) {
+        if(in_array($intervStack[$i], $finalIntervNames)){
+            $k = array_search($intervStack[$i], $finalIntervNames);
+            $prevTotal = $finalTotals[$k];
+            $averageTotal = ceil(($prevTotal+$behStack[$i])/2);
+            $averageTotal = intval($averageTotal);
+            unset($behStack[$i]);
+            $finalTotals[$k] = $averageTotal;
+            $intervStack[$i] = "blanked";
+        }
+        else{
+            array_push($finalIntervNames, $intervStack[$i]);
+            array_push($finalTotals, $behStack[$i]);
+        }
+    }
+    $maxs = array_keys($finalTotals, max($finalTotals));
+    $result = array();
+    foreach($maxs as $max){
+        array_push($result, $finalIntervNames[$max]);
+    }
+    return $result;
+}
+
 function getTriedIntsWhole(){
     $dbconn = OpenCon();
     $dbconn->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
     $sqlstmnt2 = 'SELECT DISTINCT `type` FROM `interventions`';
     $stmtUsr2 = $dbconn -> prepare($sqlstmnt2);
+    $stmtUsr2 -> execute();
+    $intervRows = $stmtUsr2->fetchAll();
+    return $intervRows;
+}
+
+function getTriedInts($id){
+    $dbconn = OpenCon();
+    $dbconn->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
+    $sqlstmnt2 = 'SELECT DISTINCT `type` FROM `interventions` WHERE `studentID` = :studentID';
+    $stmtUsr2 = $dbconn -> prepare($sqlstmnt2);
+    $intid = intval($id);
+    $stmtUsr2-> bindValue(':studentID', $intid);
     $stmtUsr2 -> execute();
     $intervRows = $stmtUsr2->fetchAll();
     return $intervRows;

@@ -1,12 +1,11 @@
-<div class="header">
-	<img class="logo" src="images/logo-placeholder.jpg" width="50" height="50">
-	<nav>
-		<ul class="navbar">
-			<li><a href="home.php" target="_self">Home</a></li>
-			<li><a href="pupils.php" target="_self">Find a pupil</a></li>
-			<li><a href="groups.php" target="_self">My Groups</a></li>
-			<li><a href="groups.php" target="_self">Take Register</a></li>
-		</ul>
-	</nav>
-	<a class="cta" href="/../index.php"><button>Logout</button></a>
-</div>
+<div class="page">
+  <nav class="page__menu menu">
+    <ul class="menu__list r-list">
+      <li class="menu__group"><a href="home.php" class="menu__link r-link text-underlined">Home</a></li>
+      <li class="menu__group"><a href="registerpupil.php" class="menu__link r-link text-underlined">Register a Pupil</a></li>
+      <li class="menu__group"><a href="pupils.php" class="menu__link r-link text-underlined">Find a Pupil</a></li>
+      <li class="menu__group"><a href="groups.php" class="menu__link r-link text-underlined">My Group</a></li>
+	    <li class="menu__group"><a href="index.php" class="menu__link r-link text-underlined">Logout</a></li>
+    </ul>
+  </nav>
+  </div>

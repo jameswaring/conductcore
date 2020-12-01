@@ -71,7 +71,7 @@ new Chart(document.getElementById("pie-chart"), {
       labels: strLabels,
       datasets: [{
         label: "Incident Type",
-        backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850"],
+        backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850", "#BFCA0B", "#CA0BC1"],
         data: strValues,
       }]
     },

@@ -48,10 +48,23 @@
         <option value="Hate Speech">Hatespeech</option>
       </select><br><div id="ertype"></div>
     Incident Description: <textarea name="descInput" id="descInput" autocomplete="off" rows="6" cols="50" maxlength="500"></textarea>
+    <div id="remaining">Remaining: 500</div><br>
     Incident Date: <input type="text" id="incDate" name="incDate" required><div id="erdate"></div>
     <input type="submit" onclick="return validateBehaviour()">
 </form>
 <p class="loggedin">You are logged in as <?php echo($_SESSION['loggedIn']['firstName']);?></p>
 </div>
+<script>
+    a = document.querySelector("#descInput");
+    a.addEventListener("input", event => {
+    const target = event.currentTarget;
+    const maxLength = 500;
+    const currentLength = target.value.length;
+    if (currentLength >= maxLength) {
+        return console.log("You have reached the maximum number of characters.");
+    };
+    document.getElementById("remaining").innerHTML = "Remaining: " + (maxLength-currentLength);
+    });
+</script>
 </body>
 </html>

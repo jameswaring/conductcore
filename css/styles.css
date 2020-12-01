@@ -80,6 +80,15 @@ a{
   text-decoration: none;
 }
 
+.profileitempic{
+  flex: 0 0 40%;
+  border-radius: 25px;
+  border: 2px solid #73AD21;
+  padding: 10px;
+  margin-bottom: 30px;
+  text-decoration: none;
+}
+
 .profileitemfinal{
   flex: 0 0 100%;
   border-radius: 25px;
@@ -215,7 +224,7 @@ button{
 table.blueTable {
   border: 1px solid #1C6EA4;
   background-color: #EEEEEE;
-  width: 60%;
+  width: 100%;
   text-align: left;
   border-collapse: collapse;
 }

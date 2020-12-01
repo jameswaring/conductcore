@@ -23,16 +23,16 @@
 <h1>Most Effective Intervention</h1>
 
 <?php 
-    $result = mostEffectiveIntWhole();
+    $result = mostEffectiveInt($_SESSION['loggedStudent']['studentID']);
     if($result == 0){
         echo('Not enough interventions for this analysis');
     }
     else{
+        echo('<p class="welcome-message">The most effective intervention/s for this pupil was judged to be</p>');
         foreach($result as $res){
-            echo('<p class="welcome-message">The most effective intervention/s for this school was judged to be</p>');
             echo('<div class="studentmostname">'.$res.'</div><br>');
             $availints = array("Internal Detention", "After School Detention", "Phone Call Home", "Parental Meeting", "School Report",  "Internal Exclusion", "External Exclusion");
-            $tried = getTriedIntsWhole();
+            $tried = getTriedInts($_SESSION['loggedStudent']['studentID']);
             $triedArray = array();
             if(sizeof($tried)<sizeof($availints)){
                 echo('<p class="welcome-message">However, the following interventions have yet to be tried</p>');

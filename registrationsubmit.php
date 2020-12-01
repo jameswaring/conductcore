@@ -21,6 +21,7 @@ else{
         $stmtUsr2 = $dbconn -> prepare($sqlstmnt2);
         $stmtUsr2 -> bindValue(':staffID', $_SESSION['loggedIn']['userID']);
         $stmtUsr2 -> execute();
+        header("Location: home.php");
         } 
     catch (PDOException $e) {
         echo "DataBase Error: The user could not be added.<br>".$e->getMessage();

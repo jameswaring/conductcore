@@ -40,14 +40,15 @@ else if(isset($_FILES['profpic'])){
             // check if pupil already exists but isn't active
             $sqlstmnt2 = 'SELECT * FROM `students` WHERE `firstName` = :firstName AND `surname` = :surname AND schoolID = :schoolID';
             $stmtUsr2 = $dbconn -> prepare($sqlstmnt2);
-            $stmtUsr2 -> bindValue(':firstName', $fname);
-            $stmtUsr2 -> bindValue(':surname', $sname);
-            $stmtUsr2 -> bindValue(':schoolID', $schoolID);
+            $stmtUsr2 -> bindValue(':firstName', $_SESSION['fnamet']);
+            $stmtUsr2 -> bindValue(':surname', $_SESSION['snamet']);
+            $stmtUsr2 -> bindValue(':schoolID', $_SESSION['schoolt']);
             unset($_SESSION['foundpupils']);
             $stmtUsr2 -> execute();
             $result = $stmtUsr2 -> fetchAll();
             $_SESSION['foundpupils'] = $result;
-            if(mysqli_num_rows($result)==0){
+            var_dump($result);
+            if(!count($result)>0){
                 addPupil();
             }
             else{
