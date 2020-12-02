@@ -1,4 +1,7 @@
 <?php
+
+// Signs up a new user. Used for testing purposes. Written by James Waring. 
+
 session_start();
 ob_start();
 include 'includes/db_connection.php';

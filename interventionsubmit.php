@@ -1,4 +1,7 @@
 <?php
+
+// submits an intervention. Written by James Waring
+
 session_start();
 ob_start();
 include 'includes/db_connection.php';

@@ -1,4 +1,5 @@
 <?php
+// suvbmits the behaviour point to the database. Written by James Waring
 session_start();
 ob_start();
 include 'includes/db_connection.php';

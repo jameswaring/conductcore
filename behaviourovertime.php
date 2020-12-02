@@ -1,4 +1,5 @@
 <?php
+// shows behaviour points over time. Written by James Waring
     session_start();
     ob_start();
     include 'includes/analysisscripts.php';

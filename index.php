@@ -1,4 +1,7 @@
 <?php
+
+// index page. Written by James Waring
+
 session_start();
 $helper = array_keys($_SESSION);
 foreach ($helper as $key){

@@ -1,5 +1,5 @@
 <?php
-// WARNING - only use this function if you are CERTAIN that the pupil id exists and have checked this already
+// WARNING - only use this function if you are CERTAIN that the pupil id exists and have checked this already. Removes a pupil by ID. Written by James Waring
 
 function findbyID($id){
     session_start();

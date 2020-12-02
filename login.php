@@ -1,4 +1,7 @@
 <?php
+
+// handles user login. Written by James Waring
+
 session_start();
 include 'includes/db_connection.php';
 include 'includes/registerscripts.php';

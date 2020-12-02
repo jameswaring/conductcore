@@ -1,4 +1,5 @@
 <?php
+// deactivates a pupil who has been added to the core previously. Written by James Waring
 session_start();
 ob_start();
 if(!isset($_GET['id']) or !isset($_GET['react'])){

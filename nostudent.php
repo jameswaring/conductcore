@@ -1,4 +1,7 @@
 <?php
+
+// No student found. Written by James Waring
+
     session_start();
     ob_start();
     if(!isset($_SESSION['loggedIn'])){

@@ -1,6 +1,6 @@
 <?php
 // Contained here are the scripts that deal with the analysis of pupil behaviour and intervention methods. Include once in dashboards
-// and profile pages
+// and profile pages. All scripts were written by James Waring solely.
 
 function negPoints($id){
     include_once 'includes/db_connection.php';

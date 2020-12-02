@@ -1,4 +1,5 @@
 <?php
+// shows the groups that are the responsibility of the logged in staff member
     session_start();
     ob_start();
     if(!isset($_SESSION['loggedIn'])){

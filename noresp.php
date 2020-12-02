@@ -1,4 +1,7 @@
 <?php
+
+// Page for someone with no responsibilities. Not used. Written by James Waring
+
     session_start();
     ob_start();
     if(!isset($_SESSION['loggedIn'])){

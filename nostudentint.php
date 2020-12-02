@@ -1,4 +1,7 @@
 <?php
+
+// Shows that there are no interventions for this student. Written by James Waring
+
     session_start();
     ob_start();
     if(!isset($_SESSION['loggedIn'])){

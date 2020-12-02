@@ -1,5 +1,5 @@
 <?php
-
+// Written by James Waring. Checks whether the register has been completed
 function checkRegister(){
     $dbconn = OpenCon();
     $sqlstmnt2 = 'SELECT * FROM compreg WHERE staffID = :staffID AND `date` = curdate()';

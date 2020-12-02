@@ -1,4 +1,7 @@
 <?php
+
+// whole school profile page. Written by James Waring. 
+
     session_start();
     ob_start();
     if(!isset($_SESSION['loggedIn'])){

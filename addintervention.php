@@ -1,4 +1,5 @@
 <?php
+// adds an intyervention point to the student's profile. Written by James Waring
     session_start();
     ob_start();
     if(!isset($_SESSION['loggedIn'])){

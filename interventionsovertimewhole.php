@@ -1,4 +1,7 @@
 <?php
+
+// Shows interventions over time for the whole school. Written by James Waring
+
     session_start();
     ob_start();
     if(!isset($_SESSION['loggedIn'])){

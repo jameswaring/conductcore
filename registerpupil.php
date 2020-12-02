@@ -1,4 +1,7 @@
 <?php
+
+// Pupil registration form. Written by James Waring. 
+
 session_start();
 ob_start();
 ?>

@@ -1,4 +1,8 @@
 <?php
+
+// Shows a pie chart of interventions. Written by James Waring
+
+
     session_start();
     ob_start();
     include 'includes/analysisscripts.php';

@@ -1,4 +1,7 @@
 <?php
+
+// Shows a list of all the pupils in the core. Written by James Waring
+
     session_start();
     ob_start();
     if(!isset($_SESSION['loggedIn'])){

@@ -1,4 +1,7 @@
 <?php
+
+// shows the most effective intervention for an individual. Written by James Waring
+
     session_start();
     ob_start();
     if(!isset($_SESSION['loggedIn'])){

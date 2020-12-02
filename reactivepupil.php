@@ -1,4 +1,7 @@
 <?php
+
+// Pupil has now been reactivated. Written by James Waring. 
+
     session_start();
     ob_start();
     if(!isset($_SESSION['loggedIn'])){

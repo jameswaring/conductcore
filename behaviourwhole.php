@@ -1,4 +1,5 @@
 <?php
+// shows whole school behaviour analysis. Written by James Waring
     session_start();
     ob_start();
     if(!isset($_SESSION['loggedIn'])){

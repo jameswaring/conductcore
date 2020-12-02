@@ -1,4 +1,5 @@
 <?php
+// shows the behaviour points with chartjs. Written by James Waring
     session_start();
     ob_start();
     include 'includes/analysisscripts.php';

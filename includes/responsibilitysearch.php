@@ -1,4 +1,5 @@
 <?php
+// finds the role of a specific staff member. Written by James Waring
 
 function staffResponsibilities($id){
     session_start();

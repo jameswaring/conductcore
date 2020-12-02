@@ -1,4 +1,5 @@
 <?php
+// shows that behaviour point has been submitted. Not used in final product. Written by James Waring
     session_start();
     ob_start();
     if(!isset($_SESSION['loggedIn'])){

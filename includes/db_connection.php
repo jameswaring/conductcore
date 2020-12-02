@@ -1,4 +1,5 @@
 <?php
+// connects to the database. Written by James Waring
     function OpenCon(){
         //pass the database details to variables
         $host = "eu-cdbr-west-03.cleardb.net";

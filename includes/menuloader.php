@@ -1,4 +1,5 @@
 <?php
+// Loads the correct menu for the user. Written by James Waring
     function loadMenu(){
         if($_SESSION['loggedIn']['job'] == 1){
         include 'includes/headmenu.php';

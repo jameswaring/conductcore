@@ -1,4 +1,7 @@
 <?php
+
+// handles the registration of the pupil. Written by James Waring. 
+
 session_start();
 ob_start();
 include 'includes/db_connection.php';

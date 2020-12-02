@@ -1,4 +1,7 @@
 <?php
+
+// searches for an inactive pupil to reactivate. Written by James Waring
+
     include 'registersubmit.php';
     session_start();
     ob_start();

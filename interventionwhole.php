@@ -1,4 +1,7 @@
 <?php
+
+// shows a whole school intervention analysis. Written by James Waring
+
     session_start();
     ob_start();
     if(!isset($_SESSION['loggedIn'])){

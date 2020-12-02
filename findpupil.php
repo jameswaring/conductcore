@@ -1,4 +1,5 @@
 <?php
+// finds a pupil by their names. Written by James Waring
 session_start();
 ob_start();
 include 'includes/db_connection.php';

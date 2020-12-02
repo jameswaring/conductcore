@@ -1,4 +1,5 @@
 <?php
+// lists pupils found by a search query. Written by James Waring
     session_start();
     ob_start();
     if(!isset($_SESSION['loggedIn'])){
